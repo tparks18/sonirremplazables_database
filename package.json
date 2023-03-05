@@ -1,0 +1,25 @@
+{
+  "name": "fullstack_database",
+  "version": "1.0.0",
+  "description": "MissingPeople-DataBase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tparks18/fullstack_database.git"
+  },
+  "keywords": [
+    "MissingPeople-Database"
+  ],
+  "author": "Alvis Peralta <alvisperaltamercado@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tparks18/fullstack_database/issues"
+  },
+  "homepage": "https://github.com/tparks18/fullstack_database#readme",
+  "dependencies": {
+    "node": "^19.6.1"
+  }
+}
