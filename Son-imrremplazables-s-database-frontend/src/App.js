@@ -77,6 +77,7 @@ function App() {
     
               <div className="maincontainer container-fluid">
                         <form className="d-flex search-form-container" role="search" onSubmit={(e)=> {
+                          e.preventDefault()
                           
                           
                           const root = document.getElementById('search-form').value;
