@@ -6,6 +6,13 @@ import { person } from "./person";
 import { SearchValue } from "./mainNavbar";
 import { click } from "@testing-library/user-event/dist/click";
 
+import { Router } from 'react-router-dom';
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
 
 
 
@@ -25,6 +32,16 @@ const person2 = [];
 person2.push(data)
 console.log(person)
 
+function generatePage(){
+  return console.log('Hello world')
+}
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+  },
+]);
 
 const person1 = person2[0].data.map(item=> {return item})
 
@@ -47,7 +64,12 @@ return <>
                 <p className="">Desaparición: {item.missingDate}</p>
         </div>
 
-            <a href="#" className="btn btn-primary">Ampliar</a>
+            <button  className="btn btn-primary" onClick={(e)=> {
+              
+             
+
+              
+              return console.log(item.id)}}>Ampliar</button>
   </div>
 </div> 
 
