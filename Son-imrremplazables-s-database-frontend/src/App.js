@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import NavbarP from './components/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 
 import '../src/styles/main.css'
