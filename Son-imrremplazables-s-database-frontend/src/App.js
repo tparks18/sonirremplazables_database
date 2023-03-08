@@ -12,6 +12,10 @@ import Card from './components/card';
 import { person } from './components/person';
 import Pagination from './components/pagination';
 
+/* React-Router */
+import { Route, Routes } from 'react-router-dom';
+import PersonTemplates from './components/MissingPerson-template';
+import PersonTemplate from './components/MissingPerson-template';
 
 
 
@@ -63,6 +67,10 @@ function App() {
   return (
 
     <div className="App">
+
+      <Routes>
+
+        <Route path='/' element={ <>
       
       <NavbarP />
 
@@ -150,10 +158,17 @@ function App() {
               </section> 
 
       </section>
+      </> 
+    
+    
+    }> </Route>
 
 
 
-      
+
+       <Route path='/person/:id' element={<PersonTemplate />}></Route>
+
+      </Routes>
 
 
 
@@ -161,6 +176,10 @@ function App() {
 
       
     </div>
+
+    
+
+
     
   );
 }

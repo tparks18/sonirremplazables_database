@@ -1,12 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
+import { Button, Navbar } from 'react-bootstrap';
 import React, { useState } from "react";
 import picture from '../assets/Img/logo.png'
 import { person } from "./person";
 import { SearchValue } from "./mainNavbar";
 import { click } from "@testing-library/user-event/dist/click";
 
-import { Router } from 'react-router-dom';
+
+
+import { Route, Router, Routes } from 'react-router-dom';
+import {
+  Outlet,
+  Link,
+  useLoaderData,
+} from "react-router-dom";
 
 import {
   createBrowserRouter,
@@ -20,6 +27,7 @@ import {
 
 
 
+ 
 
 
 
@@ -64,12 +72,17 @@ return <>
                 <p className="">Desaparición: {item.missingDate}</p>
         </div>
 
-            <button  className="btn btn-primary" onClick={(e)=> {
+            <Link to={`/person/ ${item.id}`} className="btn btn-primary" onClick={(e)=> {
+              <Routes>
+              <Route path='/home' element={<h1>Hello world</h1>} />
+              </Routes>
+
+          
               
              
 
               
-              return console.log(item.id)}}>Ampliar</button>
+              return console.log(item.id)}}> Ampliar</Link>
   </div>
 </div> 
 
