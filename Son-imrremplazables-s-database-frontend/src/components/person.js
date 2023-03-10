@@ -13,7 +13,7 @@ export const person = [{
     picture: '../assets/Img/logo.png',
     name: "Ramón", 
     phone: 829800900,
-    sex: 'Hombre',
+    sex: 'Masculino',
     province: 'Santiago', 
     missingDate: '12/01/2023',
     additionalInfo: {
@@ -34,7 +34,7 @@ export const person = [{
     picture: '../assets/Img/logo.png',
     name: "Pedro", 
     phone: 829800900,
-    sex: 'Hombre',
+    sex: 'Masculino',
     province: 'Santiago', 
     missingDate: '12/09/2023',
     additionalInfo: {
@@ -54,7 +54,7 @@ export const person = [{
     picture: '../assets/Img/logo.png',
     name: "Juanes", 
     phone: 829800900,
-    sex: 'Hombre',
+    sex: 'Masculino',
     province: 'Santiago', 
     missingDate: '12/09/2023',
     additionalInfo: {
@@ -74,7 +74,7 @@ export const person = [{
     picture: '../assets/Img/logo.png',
     name: "Alvis", 
     phone: 829800900,
-    sex: 'Hombre',
+    sex: 'Masculino',
     province: 'Santiago', 
     missingDate: '12/09/2023',
     additionalInfo: {
@@ -98,7 +98,7 @@ export const person = [{
     picture: '../assets/Img/logo.png',
     name: "Alvis", 
     phone: 829800900,
-    sex: 'Hombre',
+    sex: 'Masculino',
     province: 'Santiago', 
     missingDate: '12/09/2023',
     additionalInfo: {
@@ -123,7 +123,7 @@ export const person = [{
     picture: '../assets/Img/logo.png',
     name: "Alvis", 
     phone: 829800900,
-    sex: 'Hombre',
+    sex: 'Masculino',
     province: 'Santiago', 
     missingDate: '12/09/2023',
     additionalInfo: {
@@ -144,7 +144,7 @@ export const person = [{
     picture: '../assets/Img/logo.png',
     name: "Alvis", 
     phone: 829800900,
-    sex: 'Hombre',
+    sex: 'Masculino',
     province: 'Santiago', 
     missingDate: '12/09/2023',
     additionalInfo: {
@@ -167,7 +167,7 @@ export const person = [{
     picture: '../assets/Img/logo.png',
     name: "Alvis", 
     phone: 829800900,
-    sex: 'Hombre',
+    sex: 'Masculino',
     province: 'Santiago', 
     missingDate: '12/09/2023',
     additionalInfo: {
@@ -188,7 +188,7 @@ export const person = [{
     picture: '../assets/Img/logo.png',
     name: "Alvis", 
     phone: 829800900,
-    sex: 'Hombre',
+    sex: 'Masculino',
     province: 'Santiago', 
     missingDate: '12/09/2023',
     additionalInfo: {
