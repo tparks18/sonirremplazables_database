@@ -1,0 +1,155 @@
+:root {
+    --primary-color1: #ba0001;
+    --primary-color-hover: #8a0001;
+    --secundary-color2: #ffffff;
+    --header-primary-color: #1c202c;
+    --third-color: #282e3f;
+    --header-secundary-color: #1c2434;
+    --color-text: white;
+  }
+  
+  html {
+    font-family: "Noto Sans", sans-serif;
+  }
+  
+  
+  .MissinPerson-component {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+  
+  .MissingPerson-container {
+    display: grid;
+    grid-template-columns: 100%;
+    background: rgb(186, 0, 1);
+    background: linear-gradient(
+      0deg,
+      rgba(186, 0, 1, 0.07) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  
+    border-radius: 50px;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    padding: 30px;
+    max-width: 390px;
+    border-radius: 20px;
+  }
+  
+  .RegularCircle {
+    fill: var(--primary-color1);
+  }
+  
+  .Person-container-header {
+    margin-bottom: 15px;
+  }
+  
+  .Person-container-header div {
+    display: grid;
+    justify-content: center;
+  }
+  
+  .Person-container-header div img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .Person-content {
+    padding-top: 10px;
+    border-top: 1.5px solid var(--primary-color1);
+    display: grid;
+    row-gap: 25px;
+    justify-content: center;
+    
+    
+  }
+  
+  .Person-content div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .Person-content div p {
+    margin: 0px;
+  }
+
+  
+  .name {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .MissinDate {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .Age {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .Sex {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .DeputyMember {
+    display: flex;
+    gap: 10px;
+  }
+  .CriticalInformation {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+  }
+  
+  .CriticalInformation p {
+    text-align: justify;
+  }
+  
+  .Person-content div {
+    font-size: 18px;
+  }
+  
+  .missingPerson_footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .missingPerson_footer p {
+    
+    margin: 0px;
+  }
+  
+  .image-cooter-container img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .CriticalInformationSvg {
+    fill: var(--primary-color1);
+  }
+  
+  .Desaparecido span {
+    color: var(--primary-color1);
+  }
+  
+  .Person-content div div:first-child {
+    align-items: center;
+  }
+  .Person-content div div div:first-child {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color1);
+  }
+  .icon {
+    fill: white;
+  }
+  

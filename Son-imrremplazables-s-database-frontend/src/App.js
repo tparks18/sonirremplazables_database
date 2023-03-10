@@ -2,11 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import NavbarP from './components/header';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
 
-
-import '../src/styles/main.css'
 import MainNavBar from './components/mainNavbar';
 import Card from './components/card';
 import { person } from './components/person';
@@ -14,9 +10,9 @@ import Pagination from './components/pagination';
 
 /* React-Router */
 import { Route, Routes } from 'react-router-dom';
+
 import PersonTemplates from './components/MissingPerson-template';
 import PersonTemplate from './components/MissingPerson-template';
-
 
 
 
@@ -24,6 +20,9 @@ import PersonTemplate from './components/MissingPerson-template';
 const root = document.getElementById('root')
 const searchForm = document.getElementById('search-form')
 const searchBtn = document.getElementById('search-btn') 
+
+
+
 
 function idSearch (data){
   return data.map((item)=>{return item.id})
@@ -72,7 +71,7 @@ function App() {
 
         <Route path='/' element={ <>
       
-      <NavbarP />
+      <NavbarP  name="Base de datos" />
 
 
       <section class="content">

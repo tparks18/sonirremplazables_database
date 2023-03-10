@@ -7,7 +7,7 @@ import picture from '../assets/Img/logo.png'
 
 
 
-export default function NavbarP(){
+export default function NavbarP(props){
 
     return <>
        <header className="nav-container">
@@ -20,14 +20,14 @@ export default function NavbarP(){
       </section>
 
       <nav className="nav nav-header">
-          <a href="#">Home</a>
-          <a href="#">Base de datos</a>
+          <a href="http://sonirremplazables.org">Home</a>
+          <a href="/">Base de datos</a>
           <a href="#">Sign in </a>
         </nav>
     </header>
 
 
- <h3 className="section-title">Base de datos</h3>
+ <h3 className="section-title">{props.name}</h3>
     
     
     

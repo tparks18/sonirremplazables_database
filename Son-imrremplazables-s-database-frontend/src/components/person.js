@@ -6,8 +6,7 @@
 
 
 
-
-export const person = [{
+export const persons = [{
 
     id: 1, 
     picture: '../assets/Img/logo.png',
@@ -150,7 +149,7 @@ export const person = [{
     additionalInfo: {
 
                 age: 10,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
+                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.  Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ad doloribus quam voluptatibus tenetur consequatur, obcaecati soluta corrupti quaerat nisi ratione commodi facere assumenda! Deleniti saepe aspernatur ipsa ipsum voluptates',
 
 
     }
@@ -186,7 +185,7 @@ export const person = [{
 
     id: 9, 
     picture: '../assets/Img/logo.png',
-    name: "Alvis", 
+    name: "Alvis Junior Pérez", 
     phone: 829800900,
     sex: 'Masculino',
     province: 'Santiago', 
@@ -222,6 +221,15 @@ export const person = [{
 
 
 ]
+
+
+export const person = persons.sort((a,b)=>{
+    return b.id - a.id;
+
+
+})
+
+
 
 
 
