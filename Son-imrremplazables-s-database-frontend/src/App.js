@@ -124,7 +124,7 @@ function App() {
 
   
 
-     <h3 class="text-left">Búsquedas: </h3>
+     <h3 class="text-left">{` Desapariciones: [${search(person).length}]`}  </h3>
 
 
      <div class=" card-container" > 

@@ -1,10 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Navbar } from 'react-bootstrap';
+import '../styles/main.css'
+
 import React, { useState } from "react";
 import picture from '../assets/Img/logo.png'
 import { person } from "./person";
 import { SearchValue } from "./mainNavbar";
 import { click } from "@testing-library/user-event/dist/click";
+
 
 
 
@@ -38,11 +41,8 @@ export default function Card(data){
 
 const person2 = [];
 person2.push(data)
-console.log(person)
 
-function generatePage(){
-  return console.log('Hello world')
-}
+
 
 const router = createBrowserRouter([
   {
@@ -62,7 +62,7 @@ return <>
 <div className="card" key={item.id} style={{width: "18rem"}}>
   
   <div className="card-body">
-            <img src={picture} className="card-img1" alt="..." />
+            <img src= {require('../assets/Img/logo.png')}className="card-img1" alt="..." />
             <h5 className="card-title">{item.name}</h5>
 
         <div className="card-text">

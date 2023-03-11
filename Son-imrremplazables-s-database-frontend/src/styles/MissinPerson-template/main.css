@@ -7,6 +7,10 @@
     --header-secundary-color: #1c2434;
     --color-text: white;
   }
+
+  .App{
+    text-align: none;
+  }
   
   html {
     font-family: "Noto Sans", sans-serif;

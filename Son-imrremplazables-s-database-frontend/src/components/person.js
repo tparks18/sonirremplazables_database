@@ -70,7 +70,7 @@ export const persons = [{
 {
 
     id: 4, 
-    picture: '../assets/Img/logo.png',
+    picture: '../../public/assets/img/logo.png',
     name: "Alvis", 
     phone: 829800900,
     sex: 'Masculino',
