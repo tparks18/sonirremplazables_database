@@ -9,6 +9,7 @@ import '../styles/MissinPerson-template/Tablet.css'
 import '../styles/MissinPerson-template/Desktop.css'
 import NavbarP from "./header";
 import { person } from "./person";
+import PageNotFound from "./pageNotFound";
 
 
 
@@ -20,7 +21,9 @@ export default function PersonTemplate(){
       return personObject.id === Number(id);
     })
 
- if (data) {
+    console.log(typeof data)
+
+ if (typeof data == 'object') {
       console.log("Todo está funcionando")
       console.log(data.name)
 
@@ -262,6 +265,20 @@ export default function PersonTemplate(){
 
 
      else{
+
+
+      return <>
+       <PageNotFound />
+      
+      
+      </>
+
+     
+
+
+
+
+
       console.log("El resultado no es encontrado")
 
 
