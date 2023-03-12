@@ -13,6 +13,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import PersonTemplates from './components/MissingPerson-template';
 import PersonTemplate from './components/MissingPerson-template';
+import Footer from './components/footer';
 
 
 
@@ -173,7 +174,7 @@ function App() {
 
 
 
-      
+      <Footer />
     </div>
 
     
