@@ -14,6 +14,7 @@ import { Route, Routes } from 'react-router-dom';
 import PersonTemplates from './components/MissingPerson-template';
 import PersonTemplate from './components/MissingPerson-template';
 import Footer from './components/footer';
+import PageNotFound from './components/pageNotFound';
 
 
 
@@ -158,15 +159,34 @@ function App() {
               </section> 
 
       </section>
+      <Footer />
+
       </> 
     
     
     }> </Route>
 
 
+      <Route path='/person/' element={
+         <PageNotFound />
+
+      }>  </Route>
+
+       <Route path='/person/:id' element={<>
+
+        <PersonTemplate /> 
+
+        <Footer />
+
+       
+       </>
+       
+
+      }></Route>
 
 
-       <Route path='/person/:id' element={<PersonTemplate />}></Route>
+
+      
 
       </Routes>
 
@@ -174,7 +194,6 @@ function App() {
 
 
 
-      <Footer />
     </div>
 
     
