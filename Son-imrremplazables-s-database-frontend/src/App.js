@@ -167,7 +167,7 @@ function App() {
     }> </Route>
 
 
-      <Route path='/person/' element={
+      <Route path='/person' element={
          <PageNotFound />
 
       }>  </Route>

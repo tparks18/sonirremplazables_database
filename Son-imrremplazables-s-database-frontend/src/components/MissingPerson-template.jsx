@@ -10,6 +10,7 @@ import '../styles/MissinPerson-template/Desktop.css'
 import NavbarP from "./header";
 import { person } from "./person";
 import PageNotFound from "./pageNotFound";
+import GoBackBar from "./goBack-bar";
 
 
 
@@ -32,7 +33,12 @@ export default function PersonTemplate(){
 
     return <>
 
-    <NavbarP  name="Persona desaparecida"/>
+    <NavbarP  />
+    <GoBackBar />
+
+    <h3 className="section-title">Persona desaparecida</h3>
+
+
     
     <section key={data.id} className="MissinPerson-component">
           <main className="MissingPerson-container">

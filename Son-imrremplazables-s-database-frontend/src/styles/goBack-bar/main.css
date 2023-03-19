@@ -1,0 +1,38 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+:root {
+  --primary-color1: #ba0001;
+  --primary-color-hover: #8a0001;
+  --secundary-color2: #ffffff;
+  --header-primary-color: #1c202c;
+  --third-color: #282e3f;
+  --header-secundary-color: #1c2434;
+  --color-text: white;
+}
+
+.actionBar {
+  background-color: transparent;
+  padding: 6px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.01px solid rgba(128, 128, 128, 0.482);
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+
+}
+
+.actionBar a {
+  text-decoration: none;
+  margin-left: 3px;
+  color: gray;
+  font-size: 20px;
+  cursor: pointer;
+
+
+}
+
+.left-arrow-icon {
+  width: 10px;
+  fill: var(--primary-color1);
+}

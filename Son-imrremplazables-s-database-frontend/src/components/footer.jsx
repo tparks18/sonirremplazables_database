@@ -16,7 +16,7 @@ export default function Footer(){
       <div className="grupo-1">
         <div className="box">
           <figure>
-            <a href="#">
+            <a href="/">
               <img
                 src={picture}
                 alt="Logo de Son inrremplazables"
@@ -25,7 +25,7 @@ export default function Footer(){
           </figure>
         </div>
         <div className="box">
-          <h2>SOBRE NOSOTROS</h2>
+          <h2>NUESTRO EQUIPO</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, ipsa?
           </p>
@@ -44,7 +44,7 @@ export default function Footer(){
       </div>
       <div className="grupo-2">
         <small
-          >&copy; 2021 <b>Son inrremplazables</b> - Todos los Derechos
+          >&copy; 2023 <b>Son inrremplazables</b> - Todos los Derechos
           Reservados.</small
         >
       </div>

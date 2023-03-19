@@ -16,7 +16,7 @@ export default function NavbarP(props){
           <img src= {picture} alt="Logo" />
         </div>
 
-        <h2>Son inrremplazables</h2>
+        <h2>Son Inrremplazables</h2>
       </section>
 
       <nav className="nav nav-header">

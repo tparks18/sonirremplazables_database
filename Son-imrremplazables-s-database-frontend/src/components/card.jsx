@@ -67,7 +67,7 @@ return <>
 
         <div className="card-text">
                 <p className="">Telefono: {item.phone}</p>
-                <p className="">Sexo: {item.sex}</p>
+                <p className="">Sexo asignado: {item.sex}</p>
                 <p className="">Provincia: {item.province}</p>
                 <p className="">Desaparición: {item.missingDate}</p>
         </div>
