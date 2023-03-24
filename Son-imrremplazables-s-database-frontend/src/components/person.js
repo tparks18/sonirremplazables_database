@@ -1,3 +1,27 @@
+import { useState } from "react";
+import { useEffect } from "react";
+
+
+
+/*
+
+function PeopleInformation () {
+
+    const [person, setperson] = useState([])
+
+    useEffect( ()=>{
+        async function fetchpeople (){
+            const {data}=Await axios.get("You need to use Axios")
+
+            setperson(data)
+
+        }
+
+
+
+    }
+    
+    )
 
 
 
@@ -5,6 +29,8 @@
 
 
 
+}
+*/
 
 export const persons = [{
 
@@ -231,6 +257,8 @@ export const person = persons.sort((a,b)=>{
 
 
 
+
+fetch('../')
 
 
 
