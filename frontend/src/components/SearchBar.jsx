@@ -7,7 +7,7 @@ export function SearchValue (root) {
 
 }
 
-export default function MainNavBar(){
+export default function SearchBar(){
   const [query, setQuery] = useState("");
     
  SearchValue (query)
