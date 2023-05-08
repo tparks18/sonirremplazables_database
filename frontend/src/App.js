@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+//import { Container } from 'react-bootstrap'
 import axios from 'axios';
 import '../src/styles/main.css'
 //import MainNavBar from './components/mainNavbar';
@@ -8,6 +9,7 @@ import { person } from './components/person';
 import Pagination from './components/pagination';
 import Footer from './components/Footer'
 import BootstrapHeader from './components/BootstrapHeader';
+import SearchBar from './components/SearchBar';
 
 
 //const root = document.getElementById('root')
@@ -45,68 +47,7 @@ function App() {
         <div class="main-title-container">
           <h1 class="main-title">Personas desaparecidas en RD 🇩🇴</h1>
         </div>
-
-        <nav className="mainNavbar navbar bg-body-tertiary">
-          <div className="maincontainer container-fluid">
-            <form
-              className="d-flex search-form-container"
-              role="search"
-              onSubmit={(e) => {
-                const root = document.getElementById("search-form").value;
-                setQuery(root.toLowerCase());
-                console.log(root);
-              }}
-            >
-              <input
-                className="search-form form-control me-2"
-                id="search-form"
-                type="search"
-                placeholder="Buscar"
-                aria-label="Search"
-              />
-              <button
-                className="btn-search btn btn-outline-success"
-                id="search-btn"
-                type="submit"
-              >
-                Buscar
-              </button>
-
-              <div className="btn-group">
-                <button
-                  type="button"
-                  className="btn btn-danger dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Filtrar
-                </button>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Something else here
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/">
-                      Separated link
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </form>
-          </div>
-        </nav>
+        <SearchBar />
 
         <h3 class="text-left">Búsquedas: </h3>
 
