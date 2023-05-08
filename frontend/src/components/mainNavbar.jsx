@@ -2,12 +2,10 @@ import React from "react";
 import { useState } from "react";
 
 
-
 export function SearchValue (root) {
         return root
 
 }
-
 
 export default function MainNavBar(){
   const [query, setQuery] = useState("");
@@ -16,12 +14,8 @@ export default function MainNavBar(){
 
     const search = (data)=>{ 
       return data.filter (item=> item.name.toLowerCase().include(query))
-        
-
     
     }
-
-
 
 
     return <>
@@ -38,40 +32,17 @@ export default function MainNavBar(){
                                     Filtrar
                                     </button>   
                                     <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                    <li><a className="dropdown-item" href="#">Separated link</a></li>
+                                    <li><a className="dropdown-item" href="/">Action</a></li>
+                                    <li><a className="dropdown-item" href="/">Another action</a></li>
+                                    <li><a className="dropdown-item" href="/">Something else here</a></li>
+                                    <li><a className="dropdown-item" href="/">Separated link</a></li>
                                     </ul>
                         </div>
-                            
-            
             </form>
     </div>
   
 </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
     </>
-
-
-
-
-
 
 
 };

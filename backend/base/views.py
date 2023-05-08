@@ -11,6 +11,7 @@ def getRoutes(request):
         '/api/missingPersons/',
         '/api/missingPersons/create/',
         '/api/missingPersons/upload/',
+        #'/api/missingPersons/top', why was this here?, video 12
         '/api/missingPersons/<id>',
         '/api/missingPersons/delete/<id>',
         '/api/missingPersons/top/<update>/<id>',

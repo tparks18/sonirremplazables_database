@@ -1,26 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
-import NavbarP from './components/header';
-//import 'bootstrap/dist/css/bootstrap.min.css';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../src/styles/main.css'
-import MainNavBar from './components/mainNavbar';
+//import MainNavBar from './components/mainNavbar';
 import Card from './components/card';
 import { person } from './components/person';
 import Pagination from './components/pagination';
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 
-const root = document.getElementById('root')
-const searchForm = document.getElementById('search-form')
-const searchBtn = document.getElementById('search-btn') 
+//const root = document.getElementById('root')
+//const searchForm = document.getElementById('search-form')
+//const searchBtn = document.getElementById('search-btn') 
 
 function idSearch (data){
   return data.map((item)=>{return item.id})
 }
 
 function App() {
-
 
   const [query, setQuery] = useState("");
   const [people, setPeople] = useState([])
@@ -30,26 +28,20 @@ function App() {
 
   const search = (data)=>{ 
 
-    
     return data.filter( item=>{return item.name.toLowerCase().includes(query)})
   
-  
   }
-
-  
 
   const lastPostIndex = currentPage * postPerPage;
   const firstPostIndex = lastPostIndex - postPerPage;
   const currentPosts = search(person).slice(firstPostIndex, lastPostIndex)
 
-  
-
 
   return (
 
-    <div className="App">
+    <>
       
-      <NavbarP />
+      <Header />
 
 
       <section class="content">
@@ -68,10 +60,7 @@ function App() {
                           setQuery(root.toLowerCase()) 
                           console.log(root)
 
-
                            } }>
-
-
 
                                       <input className="search-form form-control me-2" id="search-form" type="search" placeholder="Buscar" aria-label="Search"  />
                                       <button className="btn-search btn btn-outline-success" id="search-btn" type="submit" >Buscar</button>
@@ -83,10 +72,10 @@ function App() {
                                                     Filtrar
                                                     </button>   
                                                     <ul className="dropdown-menu">
-                                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                                    <li><a className="dropdown-item" href="#">Separated link</a></li>
+                                                    <li><a className="dropdown-item" href="/">Action</a></li>
+                                                    <li><a className="dropdown-item" href="/">Another action</a></li>
+                                                    <li><a className="dropdown-item" href="/">Something else here</a></li>
+                                                    <li><a className="dropdown-item" href="/">Separated link</a></li>
                                                     </ul>
                                       </div>
                                         
@@ -96,10 +85,6 @@ function App() {
             
       </nav>
 
-
-
-
-  
 
      <h3 class="text-left">Búsquedas: </h3>
 
@@ -111,12 +96,6 @@ function App() {
         
 
      </div>
-
-
-
-
-
-
 
 
      <section class="pagination-container">  
@@ -135,16 +114,8 @@ function App() {
 
       </section>
 
-
-
-      
-
-
-
-
-
-      
-    </div>
+      <Footer />
+    </>
     
   );
 }
