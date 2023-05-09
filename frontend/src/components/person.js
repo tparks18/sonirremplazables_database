@@ -1,14 +1,15 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function Person({ person }) {
   return (
     <Card className="my-3 p-3 rounded">
-      <a href={`/person/${person._id}`}>
+      <Link to={`/person/${person._id}`}>
         <Card.Img src={person.image} />
-      </a>
+      </Link>
       <Card.Body>
-        <a href={`/person/${person._id}`}>
+        <Link to={`/person/${person._id}`}>
           <Card.Title className="text-center" as="div">
             <strong>
               <h5>
@@ -16,7 +17,7 @@ function Person({ person }) {
               </h5>
             </strong>
           </Card.Title>
-        </a>
+        </Link>
         <Card.Text as="div">
           <div className="my-2">
             <ul>
