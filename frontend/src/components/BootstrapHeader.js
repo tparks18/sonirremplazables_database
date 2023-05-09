@@ -1,5 +1,7 @@
 import React from 'react'
 import picture from "../assets/Img/logo.png";
+import "../styles/main.css";
+
 
 
 function BootstrapHeader() {
@@ -34,6 +36,9 @@ function BootstrapHeader() {
         </div>
       </nav>
       <h3 className="section-title mt-3">Base de datos</h3>
+      <div class="main-title-container">
+        <h1 class="main-title">Personas desaparecidas en RD 🇩🇴</h1>
+      </div>
     </>
   );
 }

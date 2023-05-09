@@ -8,15 +8,6 @@ import { click } from "@testing-library/user-event/dist/click";
 
 
 
-
-
-
-
-
-
-
-
-
 export default function Card(data){
 
 const person2 = [];
