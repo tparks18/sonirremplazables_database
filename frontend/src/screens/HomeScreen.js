@@ -1,11 +1,23 @@
-import React from "react";
-import { missingPersons } from "../missingPersons";
+import React, { useState, useEffect } from "react";
+//import { missingPersons } from "../missingPersons";
 import { Row, Col } from "react-bootstrap";
+import axios from 'axios';
 import Person from '../components/Person'
 
 function HomeScreen() {
-  console.log(missingPersons); // Check the imported array in the console
-  console.log(Array.isArray(missingPersons)); // Check if missingPersons is an array
+
+  const [missingPersons, setMissingPersons] = useState([])
+
+  useEffect(() => {
+
+    async function fetchMissingPersons() {
+        const { data } = await axios.get("/api/missingPersons/");
+        setMissingPersons(data)
+    }
+
+    fetchMissingPersons()
+
+  }, [])
 
   return (
     <div>

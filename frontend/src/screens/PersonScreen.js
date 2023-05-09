@@ -1,13 +1,25 @@
-import React from 'react'
-import { Card, Row, Col, Image, ListGroup, Button } from "react-bootstrap";
+import React, { useState, useEffect } from 'react'
+import { Card, Row, Col, Image, ListGroup } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import { missingPersons } from "../missingPersons";
+//import { missingPersons } from "../missingPersons";
+import axios from "axios";
 
 
 function PersonScreen() {
-    let { id } = useParams();
+    const personId = useParams();
 
-    const person = missingPersons.find((p) => p._id == id);
+    //const person = missingPersons.find((p) => p._id == id);
+
+      const [person, setPerson] = useState([]);
+
+      useEffect(() => {
+        async function fetchMissingPerson() {
+          const { data } = await axios.get(`/api/missingPersons/${personId.id}`);
+          setPerson(data);
+        }
+
+        fetchMissingPerson();
+      }, [personId]);
 
   return (
     <div>
