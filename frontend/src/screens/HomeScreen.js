@@ -1,5 +1,5 @@
 import React from "react";
-import { missingPersons } from "../assets/missingPersons";
+import { missingPersons } from "../missingPersons";
 import { Row, Col } from "react-bootstrap";
 import Person from '../components/Person'
 
