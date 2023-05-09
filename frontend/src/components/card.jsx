@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import picture from '../assets/Img/logo.png'
+import picture from '../assets/images/logo.png'
 import { person } from "./person";
 import { SearchValue } from "./SearchBar";
 import { click } from "@testing-library/user-event/dist/click";
