@@ -35,6 +35,13 @@ function Person({ person }) {
                 <strong> Desaparición:</strong> {person.date_and_time_last_seen}
               </li>
             </ul>
+            <div className="text-center">
+              <Link to={`/person/${person._id}`}>
+                <button type="button" className="btn btn-danger">
+                  Ampliar
+                </button>
+              </Link>
+            </div>
           </div>
         </Card.Text>
       </Card.Body>
