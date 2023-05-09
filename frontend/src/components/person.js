@@ -9,13 +9,29 @@ function Person({ person }) {
       </a>
       <Card.Body>
         <a href={`/person/${person._id}`}>
-          <Card.Title as="div">
+          <Card.Title class="text-center" as="div">
             <strong>
-              {person.first_name} {person.last_name}
+              <h5>
+                {person.first_name} {person.last_name}
+              </h5>
             </strong>
           </Card.Title>
           <Card.Text as="div">
-              {person.phone_number_of_contact}
+            <div className="my-2">
+              <ul>
+                <li class="list-group-item">
+                  <strong>Telefono:</strong> {person.phone_number_of_contact}
+                </li>
+                <li class="list-group-item">
+                  <strong>Last Known Location: </strong>
+                  {person.last_known_location}
+                </li>
+                <li class="list-group-item">
+                  <strong>Desaparición:</strong>{" "}
+                  {person.date_and_time_last_seen}
+                </li>
+              </ul>
+            </div>
           </Card.Text>
         </a>
       </Card.Body>

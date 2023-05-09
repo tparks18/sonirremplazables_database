@@ -172,16 +172,16 @@ html {
   .card-body {
     background-color: var(--secundary-color2);
     /* text-align: center; */
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     /* width: 300px; */
   }
   
   .card-body img {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
   }
   
@@ -191,11 +191,6 @@ html {
   
   .card-text p {
     margin-bottom: 2px;
-  }
-  
-  .card {
-    max-height: 420px;
-    min-width: 290px;
   }
   
   .btn-primary {
