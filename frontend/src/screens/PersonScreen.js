@@ -119,7 +119,7 @@ function PersonScreen() {
               <ListGroup.Item>
                 <Row>
                   <Col>
-                    <strong>Time Last Seen:</strong>
+                    <strong>Date Last Seen:</strong>
                   </Col>
                   <Col>{person.date_and_time_last_seen}</Col>
                 </Row>
@@ -127,52 +127,6 @@ function PersonScreen() {
             </ListGroup>
           </Card>
         </Col>
-
-        {/* <Col md={4}>
-          <Card>
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <Col className="text-center">
-                  <h5>
-                    {person.first_name} {person.last_name}
-                  </h5>
-                </Col>
-              </ListGroup.Item>
-
-              <ListGroup.Item>Gender: {person.gender}</ListGroup.Item>
-
-              <ListGroup.Item>
-                Age Last Seen: {person.age_last_seen}
-              </ListGroup.Item>
-
-              <ListGroup.Item>Hair: {person.hair}</ListGroup.Item>
-
-              <ListGroup.Item>Eyes: {person.eyes}</ListGroup.Item>
-
-              <ListGroup.Item>Height: {person.height}</ListGroup.Item>
-
-              <ListGroup.Item>Weight: {person.weight}</ListGroup.Item>
-
-              <ListGroup.Item>
-                Last Seen Wearing: {person.last_seen_wearing}
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                Critical Information: {person.critical_information}
-              </ListGroup.Item>
-
-              <ListGroup.Item>Province: {person.province}</ListGroup.Item>
-
-              <ListGroup.Item>
-                Last Known Location: {person.last_known_location}
-              </ListGroup.Item>
-
-              <ListGroup.Item>
-                Last and Time Last Seen: {person.date_and_time_last_seen}
-              </ListGroup.Item>
-            </ListGroup>
-          </Card>
-        </Col> */}
 
         <Col md={4}>
           <Card>
@@ -227,18 +181,4 @@ function PersonScreen() {
 
 export default PersonScreen
 
-{/* <ListGroup.Item>
-              Name of Primary Contact: {person.name_of_contact}
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              Primary Contact Number: {person.phone_number_of_contact}
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              Name of Secondary Contact: {person.name_of_contact_2}
-            </ListGroup.Item>
-
-            <ListGroup.Item>
-              Secondary Contact Number: {person.phone_number_of_contact_2}
-            </ListGroup.Item> */}
+// might need to add button around here for editing and deleting things, see product details screen video
