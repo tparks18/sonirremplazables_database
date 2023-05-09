@@ -1,6 +1,7 @@
 import React from "react";
 import { missingPersons } from "../assets/missingPersons";
 import { Row, Col } from "react-bootstrap";
+import Person from '../components/Person'
 
 function HomeScreen() {
   console.log(missingPersons); // Check the imported array in the console
@@ -8,11 +9,11 @@ function HomeScreen() {
 
   return (
     <div>
-      <h1>Búsquedas:</h1>
+      <h2>Búsquedas:</h2>
       <Row>
         {missingPersons.map((person) => (
           <Col key={person._id} sm={12} md={6} lg={4} xl={3}>
-            <h3>{person.first_name}</h3>
+            <Person person={person} />
           </Col>
         ))}
       </Row>

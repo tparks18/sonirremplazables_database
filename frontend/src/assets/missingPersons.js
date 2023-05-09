@@ -3,7 +3,7 @@ export const missingPersons = [
     _id: "1",
     first_name: "John",
     last_name: "Doe",
-    image: "./images/logo.png",
+    image: "/frontend/src/assets/images/logo.png",
     age: "52",
     gender: "male",
     hair: "black",

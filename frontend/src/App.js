@@ -5,7 +5,7 @@ import "../src/styles/main.css";
 import "../src/index.css"
 //import MainNavBar from './components/mainNavbar';
 import Card from "./components/Card";
-import { person } from "./components/person";
+//import { person } from "./components/person";
 import Pagination from "./components/pagination";
 import Footer from "./components/Footer";
 import BootstrapHeader from "./components/BootstrapHeader";
