@@ -4,6 +4,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .missingPersons import missingPersons
 
+from .models import MissingPerson
+from .serializers import MissingPersonSerializer
+
 # Create your views here.
 @api_view(['GET'])
 def getRoutes(request):
@@ -11,23 +14,23 @@ def getRoutes(request):
         '/api/missingPersons/',
         '/api/missingPersons/create/',
         '/api/missingPersons/upload/',
-        #'/api/missingPersons/top', why was this here?, video 12
-        '/api/missingPersons/<id>',
-        '/api/missingPersons/delete/<id>',
-        '/api/missingPersons/top/<update>/<id>',
+        '/api/missingPersons/top/', #why was this here?, video 12
+        '/api/missingPersons/<id>/',
+        '/api/missingPersons/delete/<id>/',
+        '/api/missingPersons/top/<update>/<id>/',
         
     ]
     return Response(routes)
 
 @api_view(['GET'])
 def getMissingPersons(request):
-    return Response(missingPersons)
+    missingPersons = MissingPerson.objects.all()
+    serializer = MissingPersonSerializer(missingPersons, many=True)
+    return Response(serializer.data)
 
 @api_view(['GET'])
 def getMissingPerson(request, pk):
-    missingPerson = None
-    for i in missingPersons:
-        if i['_id'] == pk:
-            missingPerson = i
-            break
-    return Response(missingPerson)
+    missingPerson = MissingPerson.objects.get(_id=pk)
+    serializer = MissingPersonSerializer(
+        missingPerson, many=False)
+    return Response(serializer.data)

@@ -133,7 +133,7 @@ function PersonScreen() {
                   <Col>
                     <strong>Date Last Seen:</strong>
                   </Col>
-                  <Col>{person.date_and_time_last_seen}</Col>
+                  <Col>{person.date_last_seen}</Col>
                 </Row>
               </ListGroup.Item>
             </ListGroup>

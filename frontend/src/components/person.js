@@ -21,10 +21,11 @@ function Person({ person }) {
         <Card.Text as="div">
           <div className="my-2">
             <ul>
-              <li className="list-group-item">
+              {/* <li className="list-group-item">
                 <i className="fa-solid fa-phone"></i>
                 <strong> Telefono:</strong> {person.phone_number_of_contact}
-              </li>
+                
+              </li> */}
               <li className="list-group-item">
                 <i className="fa-solid fa-location-dot"></i>
                 <strong> Last Known Location: </strong>
@@ -32,7 +33,7 @@ function Person({ person }) {
               </li>
               <li className="list-group-item">
                 <i className="fa-solid fa-calendar-xmark"></i>
-                <strong> Desaparición:</strong> {person.date_and_time_last_seen}
+                <strong> Desaparición:</strong> {person.date_last_seen}
               </li>
             </ul>
             <div className="text-center">
