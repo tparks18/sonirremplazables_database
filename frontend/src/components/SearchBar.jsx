@@ -81,7 +81,10 @@ export default function SearchBar() {
     className="form-control"
     aria-label="Text input with dropdown button"
   />
-  <button class="btn btn-outline-success fw-semibold" type="button">Search</button>
+  <button className="btn btn-outline-success fw-semibold" type="button">
+    Buscar
+    <i className="fa-solid fa-magnifying-glass ms-1"></i>
+    </button>
   <button
     className="btn btn-outline-danger dropdown-toggle fw-semibold"
     type="button"

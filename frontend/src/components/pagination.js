@@ -13,7 +13,7 @@ import React from "react";
     }
 
     return (
-         <ul class="pagination">
+         <ul className="pagination">
 
 
 

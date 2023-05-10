@@ -1,242 +1,52 @@
-
-
-
-
-
-
-
-
-
-export const person = [{
-
-    id: 1, 
-    picture: '../assets/Img/logo.png',
-    name: "Ramón", 
-    phone: 829800900,
-    sex: 'Hombre',
-    province: 'Santiago', 
-    missingDate: '12/01/2023',
-    additionalInfo: {
-
-                age: 18,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
-
-
-    }
-
-
-
-}, 
-
-{
-
-    id: 2, 
-    picture: '../assets/Img/logo.png',
-    name: "Pedro", 
-    phone: 829800900,
-    sex: 'Hombre',
-    province: 'Santiago', 
-    missingDate: '12/09/2023',
-    additionalInfo: {
-
-                age: 10,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
-
-
-    }
-
-
-
-}, 
-{
-
-    id: 3, 
-    picture: '../assets/Img/logo.png',
-    name: "Juanes", 
-    phone: 829800900,
-    sex: 'Hombre',
-    province: 'Santiago', 
-    missingDate: '12/09/2023',
-    additionalInfo: {
-
-                age: 10,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
-
-
-    }
-
-
-
-}, 
-{
-
-    id: 4, 
-    picture: '../assets/Img/logo.png',
-    name: "Alvis", 
-    phone: 829800900,
-    sex: 'Hombre',
-    province: 'Santiago', 
-    missingDate: '12/09/2023',
-    additionalInfo: {
-
-                age: 10,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
-
-
-    }
-
-
-
-}, 
-
-
-
-
-{
-
-    id: 5, 
-    picture: '../assets/Img/logo.png',
-    name: "Alvis", 
-    phone: 829800900,
-    sex: 'Hombre',
-    province: 'Santiago', 
-    missingDate: '12/09/2023',
-    additionalInfo: {
-
-                age: 10,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
-
-
-    }
-
-
-
-}, 
-
-
-
-
-
-{
-
-    id: 6, 
-    picture: '../assets/Img/logo.png',
-    name: "Alvis", 
-    phone: 829800900,
-    sex: 'Hombre',
-    province: 'Santiago', 
-    missingDate: '12/09/2023',
-    additionalInfo: {
-
-                age: 10,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
-
-
-    }
-
-
-
-}, 
-
-{
-
-    id: 7, 
-    picture: '../assets/Img/logo.png',
-    name: "Alvis", 
-    phone: 829800900,
-    sex: 'Hombre',
-    province: 'Santiago', 
-    missingDate: '12/09/2023',
-    additionalInfo: {
-
-                age: 10,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
-
-
-    }
-
-
-
-}, 
-
-
-
-{
-
-    id: 8, 
-    picture: '../assets/Img/logo.png',
-    name: "Alvis", 
-    phone: 829800900,
-    sex: 'Hombre',
-    province: 'Santiago', 
-    missingDate: '12/09/2023',
-    additionalInfo: {
-
-                age: 10,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
-
-
-    }
-
-
-
-}, 
-
-{
-
-    id: 9, 
-    picture: '../assets/Img/logo.png',
-    name: "Alvis", 
-    phone: 829800900,
-    sex: 'Hombre',
-    province: 'Santiago', 
-    missingDate: '12/09/2023',
-    additionalInfo: {
-
-                age: 10,
-                criticalInformation: 'Lorem, lorem, lorem. Lorem, lorem, lorem. Lorem, lorem, lorem.',
-
-
-    }
-
-
-
-}, 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
+import React from 'react'
+import { Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+
+function Person({ person }) {
+  return (
+    <Card className="my-3 p-3 rounded">
+      <Link to={`/person/${person._id}`}>
+        <Card.Img src={person.image} />
+      </Link>
+      <Card.Body>
+        <Link to={`/person/${person._id}`}>
+          <Card.Title className="text-center" as="div">
+            <strong>
+              <h5>
+                {person.first_name} {person.last_name}
+              </h5>
+            </strong>
+          </Card.Title>
+        </Link>
+        <Card.Text as="div">
+          <div className="my-2">
+            <ul>
+              <li className="list-group-item">
+                <i className="fa-solid fa-phone"></i>
+                <strong> Telefono:</strong> {person.phone_number_of_contact}
+              </li>
+              <li className="list-group-item">
+                <i className="fa-solid fa-location-dot"></i>
+                <strong> Last Known Location: </strong>
+                {person.last_known_location}
+              </li>
+              <li className="list-group-item">
+                <i className="fa-solid fa-calendar-xmark"></i>
+                <strong> Desaparición:</strong> {person.date_and_time_last_seen}
+              </li>
+            </ul>
+            <div className="text-center">
+              <Link to={`/person/${person._id}`}>
+                <button type="button" className="btn btn-danger">
+                  Ampliar
+                </button>
+              </Link>
+            </div>
+          </div>
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  );
+}
+
+export default Person
