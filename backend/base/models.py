@@ -41,6 +41,7 @@ class Contact(models.Model):
         max_length=200, null=True, blank=True)
     phone_number = models.CharField(max_length=200, null=False, blank=False)
     createdAt = models.DateTimeField(auto_now_add=True)
+    is_primary_contact = models.BooleanField(default=False)
     _id = models.AutoField(primary_key=True, editable=False)
 
     def __str__(self):
