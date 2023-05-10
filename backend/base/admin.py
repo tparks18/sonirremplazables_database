@@ -5,4 +5,3 @@ from .models import *
 
 admin.site.register(MissingPerson)
 admin.site.register(Contact)
-admin.site.register(Agency)

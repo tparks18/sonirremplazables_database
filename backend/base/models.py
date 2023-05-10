@@ -6,7 +6,7 @@ class MissingPerson(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     first_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
-    #image =
+    image = models.ImageField(null=True, blank=True)
     gender = models.CharField(max_length=200, null=False, blank=False)
     age_last_seen = models.IntegerField(null=False, blank=False)
     hair = models.CharField(max_length=200, null=True, blank=True)
@@ -46,13 +46,3 @@ class Contact(models.Model):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
-
-class Agency(models.Model):
-    missing_person_id = models.ForeignKey(
-        MissingPerson, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=200, null=False, blank=False)
-    contact_info = models.CharField(max_length=200, null=False, blank=False)
-    _id = models.AutoField(primary_key=True, editable=False)
-
-    def __str__(self):
-        return self.name
