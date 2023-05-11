@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 //import { missingPersons } from "../missingPersons";
 import { Row, Col } from "react-bootstrap";
 import Person from '../components/Person'
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 import { useDispatch, useSelector } from 'react-redux'
 import { listPersons } from '../actions/personActions'
 
@@ -24,9 +26,9 @@ function HomeScreen() {
     <div>
       <h2>Búsquedas:</h2>
       {loading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <h3>{error}</h3>
+        <Message variant='danger'>{error}</Message>
       ) : (
         <Row>
           {persons.map((person) => (
