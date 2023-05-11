@@ -1,17 +1,24 @@
-import { configureStore, combineReducers, applyMiddleware } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import missingPersonListReducer from './reducers/missingPersonListReducer'
+import {
+  configureStore,
+  combineReducers,
+  applyMiddleware,
+} from "@reduxjs/toolkit";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import personListReducer from "./reducers/personReducers";
 
 const reducer = combineReducers({
-    missingPersonList: missingPersonListReducer,
-})
+  personList: personListReducer,
+});
 
-const initialState = {}
+const initialState = {};
 
-const middleware = [thunk]
+const middleware = [thunk];
 
-const store = configureStore(reducer, initialState,
-    composeWithDevTools(applyMiddleware(...middleware)))
+const store = configureStore(
+  reducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
 
-export default store
+export default store;
