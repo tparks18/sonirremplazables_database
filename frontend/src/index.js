@@ -4,12 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from 'react-redux';
+import missingPersonListReducer from "./reducers/missingPersonListReducer";
+import { configureStore } from "@reduxjs/toolkit";
+//import store from './store'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const store = configureStore({ reducer: missingPersonListReducer });
+
 root.render(
   <React.StrictMode>
+
     <BrowserRouter>
+    <Provider store={store}>
     <App />
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
