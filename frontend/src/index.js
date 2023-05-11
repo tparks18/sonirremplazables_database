@@ -5,12 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import personListReducer from "./reducers/personReducers";
+import { personListReducer, personDetailsReducer } from "./reducers/personReducers";
 import { configureStore } from "@reduxjs/toolkit";
-//import store from './store'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const store = configureStore({ reducer: { personList: personListReducer } });
+const store = configureStore({ reducer: { personList: personListReducer,
+personDetails: personDetailsReducer } });
 
 root.render(
   <React.StrictMode>

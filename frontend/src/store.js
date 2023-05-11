@@ -5,10 +5,11 @@ import {
 } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import personListReducer from "./reducers/personReducers";
+import { personListReducer, personDetailsReducer } from "./reducers/personReducers";
 
 const reducer = combineReducers({
   personList: personListReducer,
+  personDetails: personDetailsReducer,
 });
 
 const initialState = {};

@@ -1,31 +1,35 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Card, Row, Col, Image, ListGroup } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-//import { missingPersons } from "../missingPersons";
-import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux';
+import { listPersonDetails } from '../actions/personActions'
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 
 function PersonScreen() {
-    const personId = useParams();
+      
+    const dispatch = useDispatch();
+    const {id} = useParams();
 
-    //const person = missingPersons.find((p) => p._id == id);
+    const personDetails = useSelector(state => state.personDetails)
+    const { error, loading, person } = personDetails;
 
-      const [person, setPerson] = useState([]);
-
-      useEffect(() => {
-        async function fetchMissingPerson() {
-          const { data } = await axios.get(`/api/missingPersons/${personId.id}`);
-          setPerson(data);
-        }
-
-        fetchMissingPerson();
-      }, [personId]);
+    useEffect(() => {
+      dispatch(listPersonDetails(id));
+    }, [id, dispatch]);
 
   return (
     <div>
       <Link to="/" className="btn btn-danger my-3">
         Página Anterior
       </Link>
+      { loading ?
+      <Loader />
+      : error
+      ? <Message variant='danger'>{error}</Message>
+      : (
+
       <Row>
         <Col md={3}>
           <Image src={person.image} alt={person.first_name} fluid />
@@ -187,6 +191,8 @@ function PersonScreen() {
           </Card>
         </Col>
       </Row>
+      )
+    }
     </div>
   );
 }
