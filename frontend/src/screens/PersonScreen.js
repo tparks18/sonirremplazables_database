@@ -150,7 +150,7 @@ function PersonScreen() {
               <ListGroup.Item>
                 <Col className="text-center">
                   <h5>
-                    <stong>Contacts</stong>
+                    <strong>Contacts</strong>
                   </h5>
                 </Col>
                 <Row>
