@@ -25,8 +25,8 @@ export const listPersons =
       dispatch({
         type: PERSON_LIST_FAIL,
         payload:
-        error.response && error.response.data.message
-        ? error.response.data.message
+        error.response && error.response.data.detail
+        ? error.response.data.detail
         : error.message,
       })
     }
@@ -46,8 +46,8 @@ export const listPersons =
       dispatch({
         type: PERSON_DETAILS_FAIL,
         payload:
-          error.response && error.response.data.message
-            ? error.response.data.message
+          error.response && error.response.data.detail
+            ? error.response.data.detail
             : error.message,
       });
     }

@@ -31,7 +31,7 @@ function BootstrapHeader() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link fw-semibold" to="/">
+              <Link className="nav-link fw-semibold" to="/login">
                 Acceder
                 <i className="fa-solid fa-right-to-bracket ms-1"></i>
               </Link>
