@@ -7,10 +7,12 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { personListReducer, personDetailsReducer } from "./reducers/personReducers";
 import { configureStore } from "@reduxjs/toolkit";
+import { userLoginReducer } from "./reducers/userReducers";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore({ reducer: { personList: personListReducer,
-personDetails: personDetailsReducer } });
+personDetails: personDetailsReducer,
+userLogin: userLoginReducer } });
 
 root.render(
   <React.StrictMode>

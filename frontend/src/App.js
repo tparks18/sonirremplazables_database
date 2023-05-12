@@ -6,7 +6,6 @@ import "../src/styles/main.css";
 import "../src/index.css"
 import Footer from "./components/Footer";
 import BootstrapHeader from "./components/BootstrapHeader";
-import SearchBar from "./components/SearchBar";
 import HomeScreen from "./screens/HomeScreen";
 import PersonScreen from "./screens/PersonScreen";
 import LoginScreen from "./screens/LoginScreen";
@@ -18,7 +17,7 @@ function App() {
   return (
     <>
       <BootstrapHeader />
-      <SearchBar />
+      
       <main className="py-3">
         <Container>
           <Routes>

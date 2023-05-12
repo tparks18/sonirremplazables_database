@@ -39,10 +39,7 @@ function BootstrapHeader() {
           </ul>
         </div>
       </nav>
-      <h3 className="section-title mt-3">Base de Datos</h3>
-      <div className="main-title-container">
-        <h1 className="main-title">Personas Desaparecidas en RD 🇩🇴</h1>
-      </div>
+      
     </>
   );
 }

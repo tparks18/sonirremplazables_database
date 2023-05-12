@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 //import { missingPersons } from "../missingPersons";
+import SearchBar from "../components/SearchBar";
 import { Row, Col } from "react-bootstrap";
 import Person from '../components/Person'
 import Loader from "../components/Loader";
@@ -24,18 +25,23 @@ function HomeScreen() {
 
   return (
     <div>
+      <h3 className="section-title mt-3">Base de Datos</h3>
+      <div className="main-title-container">
+        <h1 className="main-title">Personas Desaparecidas en RD 🇩🇴</h1>
+      </div>
+      <SearchBar />
       <h2>Búsquedas:</h2>
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error}</Message>
+        <Message variant="danger">{error}</Message>
       ) : (
         <Row>
           {persons.map((person) => (
-              <Col key={person._id} sm={12} md={6} lg={4} xl={3}>
-                <Person person={person} />
-              </Col>
-            ))}
+            <Col key={person._id} sm={12} md={6} lg={4} xl={3}>
+              <Person person={person} />
+            </Col>
+          ))}
         </Row>
       )}
     </div>
