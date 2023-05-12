@@ -1,12 +1,10 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from .missingPersons import missingPersons
+from base.missingPersons import missingPersons
 
-from .models import MissingPerson
 from django.contrib.auth.models import User
-from .serializers import MissingPersonSerializer, UserSerializer, UserSerializerWithToken
+from base.serializers import MissingPersonSerializer, UserSerializer, UserSerializerWithToken
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -26,25 +24,13 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
             data[k] = v
 
         return data
-    
+
+
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 # Create your views here.
 
-
-@api_view(['GET'])
-def getMissingPersons(request):
-    missingPersons = MissingPerson.objects.all()
-    serializer = MissingPersonSerializer(missingPersons, many=True)
-    return Response(serializer.data)
-
-@api_view(['GET'])
-def getMissingPerson(request, pk):
-    missingPerson = MissingPerson.objects.get(_id=pk)
-    serializer = MissingPersonSerializer(
-        missingPerson, many=False)
-    return Response(serializer.data)
 
 @api_view(['POST'])
 def registerUser(request):

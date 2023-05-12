@@ -1,0 +1,7 @@
+from django.urls import path, include
+from base.views import missingPerson_views as views
+
+urlpatterns = [
+    path('', views.getMissingPersons, name='missingPersons'),
+    path('missingPersons/<str:pk>/', views.getMissingPerson, name='missingPerson'),
+]

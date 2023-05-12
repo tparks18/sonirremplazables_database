@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import MissingPerson, Contact
+#from .models import MissingPerson, Contact
+from .models import MissingPerson
 
 class UserSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField(read_only=True)
@@ -39,7 +40,7 @@ class MissingPersonSerializer(serializers.ModelSerializer):
         model = MissingPerson
         fields = '__all__'
 
-class ContactSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Contact
-        fields = '__all__'
+# class ContactSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Contact
+#         fields = '__all__'
