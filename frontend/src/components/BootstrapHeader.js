@@ -1,22 +1,19 @@
-import React from 'react'
+import React from "react";
 import picture from "../images/logo.png";
 import "../styles/main.css";
-import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { logout } from '../actions/userActions'
-
-
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../actions/userActions";
 
 function BootstrapHeader() {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
-  const userLogin = useSelector(state => state.userLogin)
-  const { userInfo } = userLogin
-
-  const dispatch = useDispatch
+  const dispatch = useDispatch();
 
   const logoutHandler = () => {
-    dispatch(logout)
-  }
+    dispatch(logout());
+  };
 
   return (
     <>
@@ -33,57 +30,63 @@ function BootstrapHeader() {
             <li className="nav-item">
               <Link className="nav-link" aria-current="page" to="/">
                 Home
-                {/* <i className="fa-solid fa-house ms-1"></i> */}
               </Link>
             </li>
 
-            <li class="nav-item dropdown">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 href="/"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                {userInfo ? userInfo.name : "Admin"}
+                {userInfo ? userInfo.email : "Admin"}
               </a>
 
-              <ul class="dropdown-menu">
+              <ul className="dropdown-menu">
                 {userInfo ? (
                   <>
                     <li>
-                      <Link to="/profile" class="dropdown-item" href="/">
+                      <Link to="/profile" className="dropdown-item" href="/">
                         Profile
                       </Link>
                     </li>
                     <li>
-                      <a class="dropdown-item" onclick={logoutHandler} href="/">
+                      <a
+                        className="dropdown-item"
+                        onClick={logoutHandler}
+                        href="/"
+                      >
                         Logout
                       </a>
                     </li>
                   </>
                 ) : (
                   <li>
-                    <Link to="/login" class="dropdown-item" href="/">
+                    <Link to="/login" className="dropdown-item">
                       Acceder
                     </Link>
                   </li>
                 )}
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/">
-                    Something else here
-                  </a>
-                </li>
+                {!userInfo ? (
+                  <>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <Link to="/register" className="dropdown-item">
+                        Register
+                      </Link>
+                    </li>
+                  </>
+                ) : null}
               </ul>
             </li>
 
             <li className="nav-item">
               <Link className="nav-link ms-1" to="/">
                 Base de Datos
-                {/* <i className="fa-solid fa-folder-open ms-1"></i> */}
               </Link>
             </li>
           </ul>
@@ -93,4 +96,4 @@ function BootstrapHeader() {
   );
 }
 
-export default BootstrapHeader
+export default BootstrapHeader;
