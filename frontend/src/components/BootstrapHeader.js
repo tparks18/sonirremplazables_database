@@ -3,8 +3,7 @@ import picture from "../images/logo.png";
 import "../styles/main.css";
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { NavDropdown } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { logout } from '../actions/userActions'
 
 
 
@@ -13,8 +12,10 @@ function BootstrapHeader() {
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
 
+  const dispatch = useDispatch
+
   const logoutHandler = () => {
-    console.log('Logout')
+    dispatch(logout)
   }
 
   return (
@@ -30,9 +31,9 @@ function BootstrapHeader() {
 
           <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link fw-semibold" aria-current="page" to="/">
+              <Link className="nav-link" aria-current="page" to="/">
                 Home
-                <i className="fa-solid fa-house ms-1"></i>
+                {/* <i className="fa-solid fa-house ms-1"></i> */}
               </Link>
             </li>
 
@@ -80,9 +81,9 @@ function BootstrapHeader() {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link fw-semibold ms-1" to="/">
+              <Link className="nav-link ms-1" to="/">
                 Base de Datos
-                <i className="fa-solid fa-folder-open ms-1"></i>
+                {/* <i className="fa-solid fa-folder-open ms-1"></i> */}
               </Link>
             </li>
           </ul>
