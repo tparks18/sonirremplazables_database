@@ -10,6 +10,7 @@ import HomeScreen from "./screens/HomeScreen";
 import PersonScreen from "./screens/PersonScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<HomeScreen />} exact />
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/person/:id" element={<PersonScreen />} />
           </Routes>
         </Container>
