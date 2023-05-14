@@ -19,28 +19,45 @@ function ProfileScreen() {
     const dispatch = useDispatch();
 
     const userDetails = useSelector((state) => state.userDetails);
-//  const userDetails = useSelector((state) => {
-//    console.log("State read from store:", state); // Log the state
-//    return state.userDetails;
-//  })
     const { error, loading, user } = userDetails;
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
 
+  // useEffect(() => {
+  //   if (!userInfo) {
+  //     navigate("/login");
+  //   } else {
+  //     if (!user || !user.firstName) {
+  //       dispatch(getUserDetails("profile"));
+  //     } else {
+  //       console.log(user)
+  //       setFirstName(user.firstName);
+  //       setLastName(user.lastName);
+  //       setEmail(user.email);
+  //     }
+  //   }
+  // }, [dispatch, navigate, userInfo, user]);
 
-  useEffect(() => {
-    if (!userInfo) {
-      navigate("/login");
-    } else {
-      if (!user || !user.firstName) {
-        dispatch(getUserDetails("profile"));
-      } else {
-        setFirstName(user.firstName);
-        setLastName(user.lastName);
-        setEmail(user.email);
-      }
+ const [fetchedUserDetails, setFetchedUserDetails] = useState(false);
+
+
+useEffect(() => {
+  if (!userInfo) {
+    navigate("/login");
+  } else {
+    if (!fetchedUserDetails) {
+      dispatch(getUserDetails("profile"));
+      setFetchedUserDetails(true);
+    } else if (user) {
+      console.log(user); // Log the user data
+      setFirstName(user.first_name);
+      setLastName(user.last_name);
+      setEmail(user.email);
     }
-  }, [dispatch, navigate, userInfo, user._id]);
+  }
+}, [dispatch, navigate, userInfo, user, fetchedUserDetails]);
+
+
 
     const submitHandler = (e) => {
       e.preventDefault();
