@@ -4,7 +4,8 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { getUserDetails } from "../actions/userActions";
+import { getUserDetails, updateUserProfile } from "../actions/userActions";
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
 function ProfileScreen() {
 
@@ -22,21 +23,8 @@ function ProfileScreen() {
     const { error, loading, user } = userDetails;
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
-
-  // useEffect(() => {
-  //   if (!userInfo) {
-  //     navigate("/login");
-  //   } else {
-  //     if (!user || !user.firstName) {
-  //       dispatch(getUserDetails("profile"));
-  //     } else {
-  //       console.log(user)
-  //       setFirstName(user.firstName);
-  //       setLastName(user.lastName);
-  //       setEmail(user.email);
-  //     }
-  //   }
-  // }, [dispatch, navigate, userInfo, user]);
+    const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+    const { success } = userUpdateProfile;
 
  const [fetchedUserDetails, setFetchedUserDetails] = useState(false);
 
@@ -45,7 +33,8 @@ useEffect(() => {
   if (!userInfo) {
     navigate("/login");
   } else {
-    if (!fetchedUserDetails) {
+    if (!fetchedUserDetails || success) {
+      dispatch({ type:USER_UPDATE_PROFILE_RESET })
       dispatch(getUserDetails("profile"));
       setFetchedUserDetails(true);
     } else if (user) {
@@ -55,7 +44,7 @@ useEffect(() => {
       setEmail(user.email);
     }
   }
-}, [dispatch, navigate, userInfo, user, fetchedUserDetails]);
+}, [dispatch, navigate, userInfo, user, fetchedUserDetails, success]);
 
 
 
@@ -65,7 +54,15 @@ useEffect(() => {
       if (password !== confirmPassword) {
         setMessage("Passwords do not match");
       } else {
-        console.log('Updating...')
+        dispatch(
+          updateUserProfile({
+            id: user._id,
+            first_name: firstName, //use the state variable firstName
+            last_name: lastName, //use the state variable lastName
+            email: email,
+            password: password,
+          })
+        );
       }
     };
 
@@ -138,7 +135,7 @@ useEffect(() => {
       </Col>
 
       <Col md={9}>
-        <h2>My Orders</h2>
+        <h2>My Uploads</h2>
       </Col>
     </Row>
   );
