@@ -48,8 +48,16 @@ function BootstrapHeader() {
                 {userInfo ? (
                   <>
                     <li>
-                      <Link to="/profile" className="dropdown-item" href="/">
+                      <Link to="/profile" className="dropdown-item">
                         Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="admin/userlist"
+                        className="dropdown-item"
+                      >
+                        User List
                       </Link>
                     </li>
                     <li>
