@@ -63,6 +63,7 @@ useEffect(() => {
             password: password,
           })
         );
+        setMessage("");
       }
     };
 
