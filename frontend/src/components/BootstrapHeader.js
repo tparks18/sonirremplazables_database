@@ -52,6 +52,29 @@ function BootstrapHeader() {
                         Profile
                       </Link>
                     </li>
+
+                    {userInfo.isAdmin && (
+                      <>
+                        <li>
+                          <Link to="/admin/userlist" className="dropdown-item">
+                            User List
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/admin/peoplelist"
+                            className="dropdown-item"
+                          >
+                            People
+                          </Link>
+                        </li>
+                      </>
+                    )}
+
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+
                     <li>
                       <a
                         className="dropdown-item"
@@ -63,30 +86,12 @@ function BootstrapHeader() {
                     </li>
                   </>
                 ) : (
-                  <li>
-                    <Link to="/login" className="dropdown-item">
-                      Acceder
-                    </Link>
-                  </li>
-                )}
-
-                {userInfo && userInfo.isAdmin && (
                   <>
                     <li>
-                      <Link to="/admin/userlist" className="dropdown-item">
-                        User List
+                      <Link to="/login" className="dropdown-item">
+                        Acceder
                       </Link>
                     </li>
-                    <li>
-                      <Link to="/admin/peoplelist" className="dropdown-item">
-                        People
-                      </Link>
-                    </li>
-                  </>
-                )}
-
-                {!userInfo ? (
-                  <>
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
@@ -96,7 +101,7 @@ function BootstrapHeader() {
                       </Link>
                     </li>
                   </>
-                ) : null}
+                )}
               </ul>
             </li>
 
