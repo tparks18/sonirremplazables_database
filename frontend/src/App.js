@@ -13,6 +13,7 @@ import RegisterScreen from "./screens/RegisterScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import UserListScreen from "./screens/UserListScreen";
 import EditUserScreen from "./screens/EditUserScreen";
+import PersonListScreen from "./screens/PersonListScreen";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             <Route path="/person/:id" element={<PersonScreen />} />
             <Route path="/admin/userlist" element={<UserListScreen />} />
             <Route path="/admin/user/edit/:id" element={<EditUserScreen />} />
+            <Route path="/admin/personlist" element={<PersonListScreen />} />
           </Routes>
         </Container>
       </main>

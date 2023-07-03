@@ -62,10 +62,10 @@ function BootstrapHeader() {
                         </li>
                         <li>
                           <Link
-                            to="/admin/peoplelist"
+                            to="/admin/personlist"
                             className="dropdown-item"
                           >
-                            People
+                            Missing People List
                           </Link>
                         </li>
                       </>
