@@ -26,7 +26,7 @@ const { id } = useParams();
   const { error, loading, user } = userDetails;
 
   useEffect(() => {
-    if(!user.first_name || user.last_name || user._id !== Number(id) ){
+    if(!user.first_name || !user.last_name || user._id !== Number(id) ){
       dispatch(getUserDetails(id))
     } else {
       setFirstName(user.first_name)
