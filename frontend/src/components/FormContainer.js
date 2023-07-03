@@ -9,8 +9,6 @@ function FormContainer({ children }) {
                 { children }
             </Col>
         </Row>
-
-        <div>FormContainer</div>
     </Container>
   )
 }

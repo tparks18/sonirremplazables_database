@@ -12,6 +12,7 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import UserListScreen from "./screens/UserListScreen";
+import EditUserScreen from "./screens/EditUserScreen";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/person/:id" element={<PersonScreen />} />
             <Route path="/admin/userlist" element={<UserListScreen />} />
+            <Route path="/admin/user/edit/:id" element={<EditUserScreen />} />
           </Routes>
         </Container>
       </main>

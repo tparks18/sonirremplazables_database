@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
@@ -67,6 +67,15 @@ function UserListScreen() {
                   )}
                 </td>
                 <td>
+                <Link to={`/admin/user/edit/${user._id}`}>
+                  <Button
+                    variant="light"
+                    className="btn-sm me-2"
+                  >
+                    <i className="fas fa-edit"></i>
+                  </Button>
+                </Link>
+
                   <Button
                     variant="danger"
                     className="btn-sm"
