@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { personListReducer, personDetailsReducer } from "./reducers/personReducers";
 import { configureStore } from "@reduxjs/toolkit";
-import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userListReducer } from "./reducers/userReducers";
+import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userListReducer, userDeleteReducer } from "./reducers/userReducers";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -19,7 +19,8 @@ const store = configureStore({
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
-    userList: userListReducer
+    userList: userListReducer,
+    userDelete: userListReducer
   },
 });
 

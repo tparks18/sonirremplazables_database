@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { listUsers } from "../actions/userActions";
+import { listUsers, deleteUser } from "../actions/userActions";
 
 function UserListScreen() {
   const dispatch = useDispatch();
@@ -13,20 +13,31 @@ function UserListScreen() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const [hasLoadedUsers, setHasLoadedUsers] = useState(false);
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success: successDelete } = userDelete;
+
   const userList = useSelector((state) => state.userList);
   const { loading, error, users } = userList;
   const redirect = "/login";
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listUsers());
+        console.log("Component rendered");
+      if (!hasLoadedUsers || successDelete) {
+        dispatch(listUsers());
+        setHasLoadedUsers(true);
+      }
     } else {
       navigate(redirect);
     }
-  }, [navigate, userInfo, redirect, dispatch]);
+  }, []);
+
 
   const deleteHandler = (id) => {
-    console.log("DELETE:", id);
+    if(window.confirm('Are you sure you want to delete this user?')) {
+        dispatch(deleteUser(id))
+    }
   };
 
   return (
