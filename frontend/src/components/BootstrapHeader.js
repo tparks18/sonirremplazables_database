@@ -53,14 +53,6 @@ function BootstrapHeader() {
                       </Link>
                     </li>
                     <li>
-                      <Link
-                        to="admin/userlist"
-                        className="dropdown-item"
-                      >
-                        User List
-                      </Link>
-                    </li>
-                    <li>
                       <a
                         className="dropdown-item"
                         onClick={logoutHandler}
@@ -77,6 +69,22 @@ function BootstrapHeader() {
                     </Link>
                   </li>
                 )}
+
+                {userInfo && userInfo.isAdmin && (
+                  <>
+                    <li>
+                      <Link to="/admin/userlist" className="dropdown-item">
+                        User List
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/admin/peoplelist" className="dropdown-item">
+                        People
+                      </Link>
+                    </li>
+                  </>
+                )}
+
                 {!userInfo ? (
                   <>
                     <li>
