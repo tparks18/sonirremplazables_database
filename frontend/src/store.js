@@ -5,14 +5,18 @@ import {
 } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { personListReducer, personDetailsReducer } from "./reducers/personReducers";
+import {
+  personListReducer,
+  personDetailsReducer,
+} from "./reducers/personReducers";
 import {
   userLoginReducer,
   userRegisterReducer,
   userDetailsReducer,
   userUpdateProfileReducer,
   userListReducer,
-  userDeleteReducer
+  userDeleteReducer,
+  userUpdateReducer,
 } from "./reducers/userReducers";
 
 const reducer = combineReducers({
@@ -23,14 +27,16 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   userList: userListReducer,
-  userDelete: userDeleteReducer
+  userDelete: userDeleteReducer,
+  userUpdate: userUpdateReducer,
 });
 
-const userInfoFromStorage = localStorage.getItem('userInfo') ?
-  JSON.parse(localStorage.getItem('userInfo')) : null
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
 
 const initialState = {
-  userLogin: { userInfo: userInfoFromStorage}
+  userLogin: { userInfo: userInfoFromStorage },
 };
 
 const middleware = [thunk];

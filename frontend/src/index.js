@@ -5,10 +5,20 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { personListReducer, personDetailsReducer } from "./reducers/personReducers";
+import {
+  personListReducer,
+  personDetailsReducer,
+} from "./reducers/personReducers";
 import { configureStore } from "@reduxjs/toolkit";
-import { userLoginReducer, userRegisterReducer, userDetailsReducer, userUpdateProfileReducer, userListReducer, userDeleteReducer } from "./reducers/userReducers";
-
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
+  userListReducer,
+  userDeleteReducer,
+  userUpdateReducer,
+} from "./reducers/userReducers";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore({
@@ -20,7 +30,8 @@ const store = configureStore({
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
     userList: userListReducer,
-    userDelete: userListReducer
+    userDelete: userDeleteReducer,
+    userUpdate: userUpdateReducer,
   },
 });
 

@@ -5,39 +5,53 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
-import { getUserDetails } from "../actions/userActions";
+import { getUserDetails, updateUser } from "../actions/userActions";
+import { USER_UPDATE_RESET } from '../constants/userConstants'
 
 function EditUserScreen() {
 
 const { id } = useParams();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
 
 //   const location = useLocation();
-//   const navigate = useNavigate();
+   const navigate = useNavigate();
   const dispatch = useDispatch();
 
 //   const redirect = location.state ? Number(location.state) : "/";
+const redirect = "/admin/userlist";
 
   const userDetails = useSelector((state) => state.userDetails);
   const { error, loading, user } = userDetails;
 
+  const userUpdate = useSelector((state) => state.userUpdate);
+  const { error:errorUpdate, loading:loadingUpdate, success:successUpdate } = userUpdate;
+
   useEffect(() => {
-    if(!user.first_name || !user.last_name || user._id !== Number(id) ){
-      dispatch(getUserDetails(id))
+
+    if(successUpdate){
+      dispatch({type:USER_UPDATE_RESET})
+      navigate(redirect);
     } else {
-      setFirstName(user.first_name)
-      setLastName(user.last_name)
-      setEmail(user.email)
-      setIsAdmin(user.isAdmin)
+
+      if(!user.first_name || !user.last_name || user._id !== Number(id) ){
+        dispatch(getUserDetails(id))
+      } else {
+        setFirstName(user.first_name)
+        setLastName(user.last_name)
+        setEmail(user.email)
+        setIsAdmin(user.isAdmin)
+      }
     }
-  }, [dispatch, user, id]);
+
+  }, [dispatch, user, id, successUpdate, navigate]);
 
   const submitHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+    dispatch(updateUser({_id:user._id, first_name, last_name, email, isAdmin }))
   };
 
   return (
@@ -58,7 +72,7 @@ const { id } = useParams();
               <Form.Control
                 type="text"
                 placeholder="Enter First Name"
-                value={firstName}
+                value={first_name}
                 onChange={(e) => setFirstName(e.target.value)}
               ></Form.Control>
             </Form.Group>
@@ -68,7 +82,7 @@ const { id } = useParams();
               <Form.Control
                 type="text"
                 placeholder="Enter Last Name"
-                value={lastName}
+                value={last_name}
                 onChange={(e) => setLastName(e.target.value)}
               ></Form.Control>
             </Form.Group>
