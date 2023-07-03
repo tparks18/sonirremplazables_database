@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +18,7 @@ const { id } = useParams();
 
 //   const location = useLocation();
 //   const navigate = useNavigate();
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
 //   const redirect = location.state ? Number(location.state) : "/";
 
@@ -26,10 +26,15 @@ const { id } = useParams();
   const { error, loading, user } = userDetails;
 
   useEffect(() => {
-    if(){
-      
+    if(!user.first_name || user.last_name || user._id !== Number(id) ){
+      dispatch(getUserDetails(id))
+    } else {
+      setFirstName(user.first_name)
+      setLastName(user.last_name)
+      setEmail(user.email)
+      setIsAdmin(user.isAdmin)
     }
-  }, []);
+  }, [dispatch, user, id]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -89,7 +94,7 @@ const { id } = useParams();
             </Form.Group>
 
             <Button className="mt-3" type="submit" variant="primary">
-              Submit
+              Update
             </Button>
           </Form>
         )}
