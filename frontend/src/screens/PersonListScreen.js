@@ -72,10 +72,10 @@ function PersonListScreen() {
                 <th>PROVINCE</th>
                 <th>LAST KNOWN LOCATION</th>
                 <th>DATE LAST SEEN</th>
-                <th>PRIMARY CONTACT NAME</th>
+                {/* <th>PRIMARY CONTACT NAME</th>
                 <th>PRIMARY CONTACT NUMBER</th>
                 <th>SECONDARY CONTACT NAME</th>
-                <th>SECONDARY CONTACT NUMBER</th>
+                <th>SECONDARY CONTACT NUMBER</th> */}
                 <th>EDIT MISSING PERSON</th>
               </tr>
             </thead>
@@ -100,10 +100,10 @@ function PersonListScreen() {
                   <td>{person.province}</td>
                   <td>{person.last_known_location}</td>
                   <td>{person.date_last_seen}</td>
-                  <td>{person.name_of_contact}</td>
+                  {/* <td>{person.name_of_contact}</td>
                   <td>{person.phone_number_of_contact}</td>
                   <td>{person.name_of_contact_2}</td>
-                  <td>{person.phone_number_of_contact_2}</td>
+                  <td>{person.phone_number_of_contact_2}</td> */}
                   <td>
                     <Link to={`/admin/person/edit/${person._id}`}>
                       <Button variant="light" className="btn-sm">
