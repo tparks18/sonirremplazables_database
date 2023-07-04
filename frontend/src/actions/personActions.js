@@ -6,6 +6,9 @@ import {
   PERSON_DETAILS_REQUEST,
   PERSON_DETAILS_SUCCESS,
   PERSON_DETAILS_FAIL,
+  PERSON_DELETE_REQUEST,
+  PERSON_DELETE_SUCCESS,
+  PERSON_DELETE_FAIL,
 } from "../constants/personConstants";
 
 export const listPersons =
@@ -45,6 +48,38 @@ export const listPersons =
     } catch (error) {
       dispatch({
         type: PERSON_DETAILS_FAIL,
+        payload:
+          error.response && error.response.data.detail
+            ? error.response.data.detail
+            : error.message,
+      });
+    }
+  };
+
+  export const deletePerson = (id) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: PERSON_DELETE_REQUEST });
+      
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+        }
+      }
+
+      const { data } = await axios.delete(`/api/missingPersons/delete/${id}/`, config);
+
+      dispatch({
+        type: PERSON_DELETE_SUCCESS
+      });
+
+    } catch (error) {
+      dispatch({
+        type: PERSON_DELETE_FAIL,
         payload:
           error.response && error.response.data.detail
             ? error.response.data.detail

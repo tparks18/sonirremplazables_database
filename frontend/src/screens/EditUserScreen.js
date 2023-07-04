@@ -56,7 +56,7 @@ const redirect = "/admin/userlist";
 
   return (
     <div>
-      <Link class="btn btn-primary" to="/admin/userlist">
+      <Link className="btn btn-primary" to="/admin/userlist">
         Go Back
       </Link>
       <FormContainer>

@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import {
   personListReducer,
   personDetailsReducer,
+  personDeleteReducer
 } from "./reducers/personReducers";
 import { configureStore } from "@reduxjs/toolkit";
 import {
@@ -32,6 +33,7 @@ const store = configureStore({
     userList: userListReducer,
     userDelete: userDeleteReducer,
     userUpdate: userUpdateReducer,
+    personDelete: personDeleteReducer
   },
 });
 

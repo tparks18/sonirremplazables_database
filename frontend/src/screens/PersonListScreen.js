@@ -4,19 +4,28 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { listPersons } from "../actions/personActions";
+import { listPersons, deletePerson } from "../actions/personActions";
 
 function PersonListScreen() {
   const id = useParams().id;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const redirect = "/login";
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-
+  
   const personList = useSelector((state) => state.personList);
   const { loading, error, persons } = personList;
-  const redirect = "/login";
+
+  const personDelete = useSelector((state) => state.personDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = personDelete;
+
+  
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
@@ -24,13 +33,15 @@ function PersonListScreen() {
     } else {
       navigate(redirect);
     }
-  }, [dispatch, navigate, redirect, userInfo]);
+  }, [dispatch, navigate, redirect, userInfo, successDelete]);
 
-  const deleteHandler = (id) => {
-    if (window.confirm("Are you sure you want to delete this person card?")) {
-      //
-      };
-    }
+
+const deleteHandler = (id) => {
+  if (window.confirm("Are you sure you want to delete this person card?")) {
+    dispatch(deletePerson(id));
+  }
+};
+
 
   const createPersonHandler = (person) => {
     //create person
@@ -49,6 +60,9 @@ function PersonListScreen() {
             </Button>
           </Col>
         </Row>
+
+        {loadingDelete && <Loader />}
+        {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
 
         {loading ? (
           <Loader />

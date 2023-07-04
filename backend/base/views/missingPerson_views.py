@@ -24,3 +24,10 @@ def getMissingPerson(request, pk):
     serializer = MissingPersonSerializer(
         missingPerson, many=False)
     return Response(serializer.data)
+
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def deleteMissingPerson(request, pk):
+    missingPerson = MissingPerson.objects.get(_id=pk)
+    missingPerson.delete()
+    return Response({'success':True})
