@@ -8,6 +8,7 @@ import {
   PERSON_DELETE_REQUEST,
   PERSON_DELETE_SUCCESS,
   PERSON_DELETE_FAIL,
+  PERSON_DELETE_RESET,
   PERSON_CREATE_REQUEST,
   PERSON_CREATE_SUCCESS,
   PERSON_CREATE_FAIL,
@@ -56,6 +57,9 @@ export const personDeleteReducer = (state = { }, action) => {
 
     case PERSON_DELETE_FAIL:
       return { loading: false, error: action.payload };
+
+    case PERSON_DELETE_RESET:
+      return {};
 
     default:
       return state;

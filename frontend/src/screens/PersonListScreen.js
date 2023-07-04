@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listPersons, deletePerson, createPerson } from "../actions/personActions";
-import { PERSON_CREATE_RESET } from '../constants/personConstants'
+import { PERSON_CREATE_RESET, PERSON_DELETE_RESET } from '../constants/personConstants'
 
 function PersonListScreen() {
   const id = useParams().id;
@@ -56,8 +56,14 @@ useEffect(() => {
     } else {
       dispatch(listPersons());
     }
+
+    if (successDelete) {
+      navigate("/admin/personlist");
+      dispatch({ type: PERSON_DELETE_RESET });
+    }
   }
-}, [dispatch, navigate, userInfo, createdPerson, redirect]);
+}, [dispatch, navigate, userInfo, createdPerson, successDelete, redirect]);
+
 
 
 const deleteHandler = (id) => {
