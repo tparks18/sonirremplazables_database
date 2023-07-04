@@ -60,6 +60,40 @@ def createMissingPerson(request):
         missingPerson, many=False)
     return Response(serializer.data)
 
+
+@api_view(['PUT'])
+@permission_classes([IsAdminUser])
+def updateMissingPerson(request, pk):
+    data = request.data
+    missingPerson = MissingPerson.objects.get(_id=pk)
+
+    missingPerson.first_name = data['first_name']
+    missingPerson.last_name = data['last_name']
+    missingPerson.gender = data['gender']
+    missingPerson.age_last_seen = data['age_last_seen']
+    missingPerson.hair = data['hair']
+    missingPerson.eyes = data['eyes']
+    missingPerson.height = data['height']
+    missingPerson.weight = data['weight']
+    missingPerson.last_seen_wearing = data['last_seen_wearing']
+    missingPerson.critical_information = data['critical_information']
+    missingPerson.province = data['province']
+    missingPerson.city = data['city']
+    missingPerson.last_known_location = data['last_known_location']
+    missingPerson.date_last_seen = data['date_last_seen']
+    missingPerson.primary_contact_first_name = data['primary_contact_first_name']
+    missingPerson.primary_contact_last_name = data['primary_contact_last_name']
+    missingPerson.primary_contact_phone = data['primary_contact_phone']
+    missingPerson.secondary_contact_first_name = data['secondary_contact_first_name']
+    missingPerson.secondary_contact_last_name = data['secondary_contact_last_name']
+    missingPerson.secondary_contact_phone = data['secondary_contact_phone']
+
+    missingPerson.save()
+
+    serializer = MissingPersonSerializer(
+        missingPerson, many=False)
+    return Response(serializer.data)
+
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
 def deleteMissingPerson(request, pk):
