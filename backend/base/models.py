@@ -3,10 +3,11 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class MissingPerson(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    #user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     first_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, default='/logo.png')
     gender = models.CharField(max_length=200, null=False, blank=False)
     age_last_seen = models.IntegerField(null=False, blank=False)
     hair = models.CharField(max_length=200, null=True, blank=True)
