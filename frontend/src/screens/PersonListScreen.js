@@ -45,17 +45,19 @@ function PersonListScreen() {
   //   }
   // }, [dispatch, navigate, redirect, userInfo, successDelete]);
 
-  useEffect(() => {
-    dispatch({ type: PERSON_CREATE_RESET });
-    if (!userInfo.isAdmin) {
-      navigate(redirect);
-      
-    } if(successCreate) {
-      navigate(`/admin/person/${createdPerson._id}`);
+
+useEffect(() => {
+  if (!userInfo.isAdmin) {
+    navigate(redirect);
+  } else {
+    if (createdPerson) {
+      navigate(`/admin/person/edit/${createdPerson._id}`);
+      dispatch({ type: PERSON_CREATE_RESET });
     } else {
-      dispatch(listPersons)
+      dispatch(listPersons());
     }
-  }, [dispatch, navigate, redirect, userInfo, successDelete, successCreate, createdPerson]);
+  }
+}, [dispatch, navigate, userInfo, createdPerson, redirect]);
 
 
 const deleteHandler = (id) => {
@@ -64,10 +66,10 @@ const deleteHandler = (id) => {
   }
 };
 
+const createPersonHandler = () => {
+  dispatch(createPerson());
+};
 
-  const createPersonHandler = () => {
-    dispatch(createPerson())
-    }
 
     return (
       <div>
