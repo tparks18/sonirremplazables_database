@@ -9,6 +9,9 @@ import {
   PERSON_DELETE_REQUEST,
   PERSON_DELETE_SUCCESS,
   PERSON_DELETE_FAIL,
+  PERSON_CREATE_REQUEST,
+  PERSON_CREATE_SUCCESS,
+  PERSON_CREATE_FAIL,
 } from "../constants/personConstants";
 
 export const listPersons =
@@ -80,6 +83,42 @@ export const listPersons =
     } catch (error) {
       dispatch({
         type: PERSON_DELETE_FAIL,
+        payload:
+          error.response && error.response.data.detail
+            ? error.response.data.detail
+            : error.message,
+      });
+    }
+  };
+
+  export const createPerson = () => async (dispatch, getState) => {
+    try {
+      dispatch({ type: PERSON_CREATE_REQUEST });
+
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.post(
+        `/api/missingPersons/create/`,
+        {},
+        config
+      );
+
+      dispatch({
+        type: PERSON_CREATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PERSON_CREATE_FAIL,
         payload:
           error.response && error.response.data.detail
             ? error.response.data.detail

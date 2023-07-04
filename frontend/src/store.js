@@ -8,7 +8,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import {
   personListReducer,
   personDetailsReducer,
-  personDeleteReducer
+  personDeleteReducer,
+  personCreateReducer
 } from "./reducers/personReducers";
 import {
   userLoginReducer,
@@ -30,7 +31,8 @@ const reducer = combineReducers({
   userList: userListReducer,
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
-  personDelete: personDeleteReducer
+  personDelete: personDeleteReducer,
+  personCreate: personCreateReducer
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

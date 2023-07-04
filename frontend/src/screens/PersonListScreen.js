@@ -4,13 +4,15 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { listPersons, deletePerson } from "../actions/personActions";
+import { listPersons, deletePerson, createPerson } from "../actions/personActions";
+import { PERSON_CREATE_RESET } from '../constants/personConstants'
 
 function PersonListScreen() {
   const id = useParams().id;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const redirect = "/login";
+  //const adminredirect = `/admin/person/${createdPerson._id}`;
 
   
   const personList = useSelector((state) => state.personList);
@@ -23,17 +25,37 @@ function PersonListScreen() {
     success: successDelete,
   } = personDelete;
 
+  const personCreate = useSelector((state) => state.personCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    person: createdPerson
+  } = personCreate;
+
   
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  // useEffect(() => {
+  //   if (userInfo && userInfo.isAdmin) {
+  //     dispatch(listPersons());
+  //   } else {
+  //     navigate(redirect);
+  //   }
+  // }, [dispatch, navigate, redirect, userInfo, successDelete]);
+
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listPersons());
-    } else {
+    dispatch({ type: PERSON_CREATE_RESET });
+    if (!userInfo.isAdmin) {
       navigate(redirect);
+      
+    } if(successCreate) {
+      navigate(`/admin/person/${createdPerson._id}`);
+    } else {
+      dispatch(listPersons)
     }
-  }, [dispatch, navigate, redirect, userInfo, successDelete]);
+  }, [dispatch, navigate, redirect, userInfo, successDelete, successCreate, createdPerson]);
 
 
 const deleteHandler = (id) => {
@@ -43,8 +65,8 @@ const deleteHandler = (id) => {
 };
 
 
-  const createPersonHandler = (person) => {
-    //create person
+  const createPersonHandler = () => {
+    dispatch(createPerson())
     }
 
     return (
@@ -63,6 +85,9 @@ const deleteHandler = (id) => {
 
         {loadingDelete && <Loader />}
         {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+
+        {loadingCreate && <Loader />}
+        {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
 
         {loading ? (
           <Loader />
