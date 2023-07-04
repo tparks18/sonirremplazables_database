@@ -9,7 +9,8 @@ import {
   personListReducer,
   personDetailsReducer,
   personDeleteReducer,
-  personCreateReducer
+  personCreateReducer,
+  personUpdateReducer,
 } from "./reducers/personReducers";
 import { configureStore } from "@reduxjs/toolkit";
 import {
@@ -35,7 +36,8 @@ const store = configureStore({
     userDelete: userDeleteReducer,
     userUpdate: userUpdateReducer,
     personDelete: personDeleteReducer,
-    personCreate: personCreateReducer
+    personCreate: personCreateReducer,
+    personUpdate: personUpdateReducer
   },
 });
 

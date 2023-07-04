@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
-import { listPersonDetails } from "../actions/personActions";
+import { listPersonDetails, updatePerson } from "../actions/personActions";
+import { PERSON_UPDATE_RESET } from '../constants/personConstants'
 
 function EditPersonScreen() {
   const { id } = useParams();
@@ -22,12 +23,15 @@ function EditPersonScreen() {
   const [last_seen_wearing, setLastSeenWearing] = useState("");
   const [critical_information, setCriticalInformation] = useState("");
   const [province, setProvince] = useState("");
+  const [city, setCity] = useState("");
   const [last_known_location, setLastKnownLocation] = useState("");
   const [date_last_seen, setDateLastSeen] = useState("");
-  const [primary_contact_name, setPrimaryContactName] = useState("");
-  const [primary_contact_number, setPrimaryContactNumber] = useState("");
-  const [secondary_contact_name, setSecondaryContactName] = useState("");
-  const [secondary_contact_number, setSecondaryContactNumber] = useState("");
+  const [primary_contact_first_name, setPrimaryContactFirstName] = useState("");
+  const [primary_contact_last_name, setPrimaryContactLastName] = useState("");
+  const [primary_contact_phone, setPrimaryContactPhone] = useState("");
+  const [secondary_contact_first_name, setSecondaryContactFirstName] = useState("");
+  const [secondary_contact_last_name, setSecondaryContactLastName] = useState("");
+  const [secondary_contact_phone, setSecondaryContactPhone] = useState("");
 
   //   const location = useLocation();
   const navigate = useNavigate();
@@ -39,34 +43,71 @@ function EditPersonScreen() {
   const personDetails = useSelector((state) => state.personDetails);
   const { error, loading, person } = personDetails;
 
+  const personUpdate = useSelector((state) => state.personUpdate);
+  const { error:errorUpdate, loading:loadingUpdate, success:successUpdate } = personUpdate;
+
   useEffect(() => {
-    if (!person.first_name || !person.last_name || person._id !== Number(id)) {
-      dispatch(listPersonDetails(id));
+    if(successUpdate){
+      dispatch({type:PERSON_UPDATE_RESET})
+      navigate('/admin/personlist')
     } else {
-      setFirstName(person.first_name);
-      setLastName(person.last_name);
-      setImage(person.image);
-      setGender(person.gender);
-      setAgeLastSeen(person.age_last_seen);
-      setHair(person.hair);
-      setEyes(person.eyes);
-      setHeight(person.height);
-      setWeight(person.weight);
-      setLastSeenWearing(person.last_seen_wearing);
-      setCriticalInformation(person.critical_information);
-      setProvince(person.setProvince);
-      setLastKnownLocation(person.last_known_location);
-      setDateLastSeen(person.date_last_seen);
-      setPrimaryContactName(person.primary_contact_name);
-      setPrimaryContactNumber(person.primary_contact_number);
-      setSecondaryContactName(person.secondary_contact_name);
-      setSecondaryContactNumber(person.secondary_contact_number);
+
+      if (!person.first_name || !person.last_name || person._id !== Number(id)) {
+        dispatch(listPersonDetails(id));
+  
+      } else {
+        setFirstName(person.first_name);
+        setLastName(person.last_name);
+        setImage(person.image);
+        setGender(person.gender);
+        setAgeLastSeen(person.age_last_seen);
+        setHair(person.hair);
+        setEyes(person.eyes);
+        setHeight(person.height);
+        setWeight(person.weight);
+        setLastSeenWearing(person.last_seen_wearing);
+        setCriticalInformation(person.critical_information);
+        setProvince(person.setProvince);
+        setCity(person.city);
+        setLastKnownLocation(person.last_known_location);
+        setDateLastSeen(person.date_last_seen);
+        setPrimaryContactFirstName(person.primary_contact_first_name);
+        setPrimaryContactLastName(person.primary_contact_last_name);
+        setPrimaryContactPhone(person.primary_contact_phone);
+        setSecondaryContactFirstName(person.secondary_contact_first_name);
+        setSecondaryContactLastName(person.secondary_contact_last_name);
+        setSecondaryContactPhone(person.secondary_contact_phone);
+      }
     }
-  }, [dispatch, person, id, navigate]);
+
+  }, [dispatch, person, id, navigate, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    //update person
+    dispatch(updatePerson({
+      _id:id,
+      first_name,
+      last_name,
+      image,
+      gender,
+      age_last_seen,
+      hair,
+      eyes,
+      height,
+      weight,
+      last_seen_wearing,
+      critical_information,
+      province,
+      city,
+      last_known_location,
+      date_last_seen,
+      primary_contact_first_name,
+      primary_contact_last_name,
+      primary_contact_phone,
+      secondary_contact_first_name,
+      secondary_contact_last_name,
+      secondary_contact_phone,
+    }))
   };
 
   return (
@@ -76,6 +117,8 @@ function EditPersonScreen() {
       </Link>
       <FormContainer>
         <h1>Edit Person</h1>
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant="danger">{error}</Message>}
 
         {loading ? (
           <Loader />
@@ -213,15 +256,30 @@ function EditPersonScreen() {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="province">
-              <Form.Label>Province</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Province"
-                value={province}
-                onChange={(e) => setProvince(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            <Row>
+              <Col>
+                <Form.Group controlId="province">
+                  <Form.Label>Province</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Province"
+                    value={province}
+                    onChange={(e) => setProvince(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="city">
+                  <Form.Label>City</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter City"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
             <Form.Group controlId="lastKnownLocation">
               <Form.Label>Last Known Location</Form.Label>
@@ -245,53 +303,75 @@ function EditPersonScreen() {
 
             <Row>
               <Col>
-                <Form.Group controlId="primaryContactName">
-                  <Form.Label>Primary Contact Name</Form.Label>
+                <Form.Group controlId="primaryContactFirstName">
+                  <Form.Label>Primary Contact First Name</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Primary Contact Name"
-                    value={primary_contact_name}
-                    onChange={(e) => setPrimaryContactName(e.target.value)}
+                    placeholder="Enter Primary Contact First Name"
+                    value={primary_contact_first_name}
+                    onChange={(e) => setPrimaryContactFirstName(e.target.value)}
                   />
                 </Form.Group>
               </Col>
               <Col>
-                <Form.Group controlId="primaryContactPhone">
-                  <Form.Label>Primary Contact Phone</Form.Label>
+                <Form.Group controlId="primaryLastName">
+                  <Form.Label>Primary Contact Last Name</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Primary Contact Phone"
-                    value={primary_contact_number}
-                    onChange={(e) => setPrimaryContactNumber(e.target.value)}
+                    placeholder="Enter Primary Contact Last Name"
+                    value={primary_contact_last_name}
+                    onChange={(e) => setPrimaryContactLastName(e.target.value)}
                   />
                 </Form.Group>
               </Col>
             </Row>
 
+            <Form.Group controlId="primaryContactPhone">
+              <Form.Label>Primary Contact Phone</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Primary Contact Phone"
+                value={primary_contact_phone}
+                onChange={(e) => setPrimaryContactPhone(e.target.value)}
+              />
+            </Form.Group>
+
             <Row>
               <Col>
-                <Form.Group controlId="secondaryContactName">
-                  <Form.Label>Secondary Contact Name</Form.Label>
+                <Form.Group controlId="secondaryContactFirstName">
+                  <Form.Label>Secondary Contact First Name</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Secondary Contact Name"
-                    value={secondary_contact_name}
-                    onChange={(e) => setSecondaryContactName(e.target.value)}
+                    placeholder="Enter Secondary Contact First Name"
+                    value={secondary_contact_first_name}
+                    onChange={(e) => setSecondaryContactFirstName(e.target.value)}
                   />
                 </Form.Group>
               </Col>
               <Col>
-                <Form.Group controlId="secondaryContactPhone">
-                  <Form.Label>Secondary Contact Phone</Form.Label>
+                <Form.Group controlId="secondaryLastName">
+                  <Form.Label>Secondary Contact Last Name</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Secondary Contact Phone"
-                    value={secondary_contact_number}
-                    onChange={(e) => setSecondaryContactNumber(e.target.value)}
+                    placeholder="Enter secondary Contact Last Name"
+                    value={secondary_contact_last_name}
+                    onChange={(e) => setSecondaryContactLastName(e.target.value)}
                   />
                 </Form.Group>
               </Col>
             </Row>
+
+            <Form.Group controlId="secondaryContactPhone">
+              <Form.Label>Secondary Contact Phone</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Secondary Contact Phone"
+                value={secondary_contact_phone}
+                onChange={(e) => setSecondaryContactPhone(e.target.value)}
+              />
+            </Form.Group>
+
+            
 
             <Button className="mt-3" type="submit" variant="primary">
               Update

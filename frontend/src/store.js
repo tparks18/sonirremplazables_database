@@ -9,7 +9,8 @@ import {
   personListReducer,
   personDetailsReducer,
   personDeleteReducer,
-  personCreateReducer
+  personCreateReducer,
+  personUpdateReducer,
 } from "./reducers/personReducers";
 import {
   userLoginReducer,
@@ -32,7 +33,8 @@ const reducer = combineReducers({
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
   personDelete: personDeleteReducer,
-  personCreate: personCreateReducer
+  personCreate: personCreateReducer,
+  personUpdate: personUpdateReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
