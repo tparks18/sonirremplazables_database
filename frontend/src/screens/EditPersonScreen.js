@@ -83,25 +83,30 @@ function EditPersonScreen() {
           <Message variant="danger">{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId="firstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter First Name"
-                value={first_name}
-                onChange={(e) => setFirstName(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="lastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Last Name"
-                value={last_name}
-                onChange={(e) => setLastName(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            <Row>
+              <Col>
+                <Form.Group controlId="firstName">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter First Name"
+                    value={first_name}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="lastName">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Last Name"
+                    value={last_name}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
             <Form.Group controlId="image">
               <Form.Label>Image</Form.Label>
@@ -113,65 +118,80 @@ function EditPersonScreen() {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="gender">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Gender"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            <Row>
+              <Col>
+                <Form.Group controlId="gender">
+                  <Form.Label>Gender</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Gender"
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="ageLastSeen">
+                  <Form.Label>Age Last Seen</Form.Label>
+                  <Form.Control
+                    type="number"
+                    placeholder="Enter Age Last Seen"
+                    value={age_last_seen}
+                    onChange={(e) => setAgeLastSeen(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
-            <Form.Group controlId="ageLastSeen">
-              <Form.Label>Age Last Seen</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter Age Last Seen"
-                value={age_last_seen}
-                onChange={(e) => setAgeLastSeen(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            <Row>
+              <Col>
+                <Form.Group controlId="hair">
+                  <Form.Label>Hair</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Hair Description"
+                    value={hair}
+                    onChange={(e) => setHair(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="eyes">
+                  <Form.Label>Eyes</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Eye Description"
+                    value={eyes}
+                    onChange={(e) => setEyes(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
-            <Form.Group controlId="hair">
-              <Form.Label>Hair</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Hair Description"
-                value={hair}
-                onChange={(e) => setHair(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="eyes">
-              <Form.Label>Eyes</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Eye Description"
-                value={eyes}
-                onChange={(e) => setEyes(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="height">
-              <Form.Label>Height</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter Height"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="weight">
-              <Form.Label>Weight</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Enter Weight"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            <Row>
+              <Col>
+                <Form.Group controlId="height">
+                  <Form.Label>Height</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Height"
+                    value={height}
+                    onChange={(e) => setHeight(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="weight">
+                  <Form.Label>Weight</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Weight"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
             <Form.Group controlId="lastSeenWearing">
               <Form.Label>Last Seen Wearing</Form.Label>
@@ -223,47 +243,55 @@ function EditPersonScreen() {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="primaryContactName">
-              <Form.Label>Primary Contact Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Primary Contact Name"
-                value={primary_contact_name}
-                onChange={(e) => setPrimaryContactName(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            <Row>
+              <Col>
+                <Form.Group controlId="primaryContactName">
+                  <Form.Label>Primary Contact Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Primary Contact Name"
+                    value={primary_contact_name}
+                    onChange={(e) => setPrimaryContactName(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="primaryContactPhone">
+                  <Form.Label>Primary Contact Phone</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Primary Contact Phone"
+                    value={primary_contact_number}
+                    onChange={(e) => setPrimaryContactNumber(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
-            <Form.Group controlId="primaryContactNumber">
-              <Form.Label>Primary Contact Number</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Primary Contact Number"
-                value={primary_contact_number}
-                onChange={(e) => setPrimaryContactNumber(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="secondaryContactName">
-              <Form.Label>Secondary Contact Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Secondary Contact Name"
-                value={secondary_contact_name}
-                onChange={(e) => setSecondaryContactName(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-            <Form.Group controlId="secondaryContactNumber">
-              <Form.Label>Secondary Contact Number</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Secondary Contact Number"
-                value={secondary_contact_number}
-                onChange={(e) => setSecondaryContactNumber(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-
-        
+            <Row>
+              <Col>
+                <Form.Group controlId="secondaryContactName">
+                  <Form.Label>Secondary Contact Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Secondary Contact Name"
+                    value={secondary_contact_name}
+                    onChange={(e) => setSecondaryContactName(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group controlId="secondaryContactPhone">
+                  <Form.Label>Secondary Contact Phone</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter Secondary Contact Phone"
+                    value={secondary_contact_number}
+                    onChange={(e) => setSecondaryContactNumber(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
 
             <Button className="mt-3" type="submit" variant="primary">
               Update
