@@ -1,15 +1,16 @@
-import React, { useState, useEffect, useReducer } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import { listPersonDetails, updatePerson } from "../actions/personActions";
-import { PERSON_UPDATE_RESET } from '../constants/personConstants'
+import { PERSON_UPDATE_RESET } from "../constants/personConstants";
 
 function EditPersonScreen() {
-  const { id } = useParams();
+  const { person_id } = useParams();
 
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
@@ -29,32 +30,37 @@ function EditPersonScreen() {
   const [primary_contact_first_name, setPrimaryContactFirstName] = useState("");
   const [primary_contact_last_name, setPrimaryContactLastName] = useState("");
   const [primary_contact_phone, setPrimaryContactPhone] = useState("");
-  const [secondary_contact_first_name, setSecondaryContactFirstName] = useState("");
-  const [secondary_contact_last_name, setSecondaryContactLastName] = useState("");
+  const [secondary_contact_first_name, setSecondaryContactFirstName] =
+    useState("");
+  const [secondary_contact_last_name, setSecondaryContactLastName] =
+    useState("");
   const [secondary_contact_phone, setSecondaryContactPhone] = useState("");
+  const [uploading, setUpload] = useState(false);
 
-  //   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  //   const redirect = location.state ? Number(location.state) : "/";
-  const redirect = "/admin/userlist";
 
   const personDetails = useSelector((state) => state.personDetails);
   const { error, loading, person } = personDetails;
 
   const personUpdate = useSelector((state) => state.personUpdate);
-  const { error:errorUpdate, loading:loadingUpdate, success:successUpdate } = personUpdate;
+  const {
+    error: errorUpdate,
+    loading: loadingUpdate,
+    success: successUpdate,
+  } = personUpdate;
 
   useEffect(() => {
-    if(successUpdate){
-      dispatch({type:PERSON_UPDATE_RESET})
-      navigate('/admin/personlist')
+    if (successUpdate) {
+      dispatch({ type: PERSON_UPDATE_RESET });
+      navigate("/admin/personlist");
     } else {
-
-      if (!person.first_name || !person.last_name || person._id !== Number(id)) {
-        dispatch(listPersonDetails(id));
-  
+      if (
+        !person.first_name ||
+        !person.last_name ||
+        person._id !== Number(person_id)
+      ) {
+        dispatch(listPersonDetails(person_id));
       } else {
         setFirstName(person.first_name);
         setLastName(person.last_name);
@@ -67,7 +73,7 @@ function EditPersonScreen() {
         setWeight(person.weight);
         setLastSeenWearing(person.last_seen_wearing);
         setCriticalInformation(person.critical_information);
-        setProvince(person.setProvince);
+        setProvince(person.province);
         setCity(person.city);
         setLastKnownLocation(person.last_known_location);
         setDateLastSeen(person.date_last_seen);
@@ -79,35 +85,62 @@ function EditPersonScreen() {
         setSecondaryContactPhone(person.secondary_contact_phone);
       }
     }
-
-  }, [dispatch, person, id, navigate, successUpdate]);
+  }, [dispatch, person, person_id, navigate, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updatePerson({
-      _id:id,
-      first_name,
-      last_name,
-      image,
-      gender,
-      age_last_seen,
-      hair,
-      eyes,
-      height,
-      weight,
-      last_seen_wearing,
-      critical_information,
-      province,
-      city,
-      last_known_location,
-      date_last_seen,
-      primary_contact_first_name,
-      primary_contact_last_name,
-      primary_contact_phone,
-      secondary_contact_first_name,
-      secondary_contact_last_name,
-      secondary_contact_phone,
-    }))
+    dispatch(
+      updatePerson({
+        _id: person_id,
+        first_name,
+        last_name,
+        image,
+        gender,
+        age_last_seen,
+        hair,
+        eyes,
+        height,
+        weight,
+        last_seen_wearing,
+        critical_information,
+        province,
+        city,
+        last_known_location,
+        date_last_seen,
+        primary_contact_first_name,
+        primary_contact_last_name,
+        primary_contact_phone,
+        secondary_contact_first_name,
+        secondary_contact_last_name,
+        secondary_contact_phone,
+      })
+    );
+  };
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+
+    formData.append('image', file)
+    formData.append('person_id', person_id)
+    setUpload(true)
+
+    try {
+      const config = {
+        headers:{
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+      const {data} = await axios.post('/api/missingPersons/upload/', formData, config)
+      
+      setImage(data)
+      setUpload(false)
+
+    } catch(error) {
+      setUpload(false)
+    }
+
+
   };
 
   return (
@@ -118,7 +151,7 @@ function EditPersonScreen() {
       <FormContainer>
         <h1>Edit Person</h1>
         {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant="danger">{error}</Message>}
+        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
 
         {loading ? (
           <Loader />
@@ -151,7 +184,7 @@ function EditPersonScreen() {
               </Col>
             </Row>
 
-            <Form.Group controlId="image">
+            <Form.Group id="image">
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type="text"
@@ -159,6 +192,15 @@ function EditPersonScreen() {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
+
+              <Form.Control
+                type="file"
+                id="image-file"
+                label="Choose File"
+                custom
+                onChange={uploadFileHandler}
+              ></Form.Control>
+              {uploading && <Loader />}
             </Form.Group>
 
             <Row>
@@ -344,7 +386,9 @@ function EditPersonScreen() {
                     type="text"
                     placeholder="Enter Secondary Contact First Name"
                     value={secondary_contact_first_name}
-                    onChange={(e) => setSecondaryContactFirstName(e.target.value)}
+                    onChange={(e) =>
+                      setSecondaryContactFirstName(e.target.value)
+                    }
                   />
                 </Form.Group>
               </Col>
@@ -355,7 +399,9 @@ function EditPersonScreen() {
                     type="text"
                     placeholder="Enter secondary Contact Last Name"
                     value={secondary_contact_last_name}
-                    onChange={(e) => setSecondaryContactLastName(e.target.value)}
+                    onChange={(e) =>
+                      setSecondaryContactLastName(e.target.value)
+                    }
                   />
                 </Form.Group>
               </Col>
@@ -370,8 +416,6 @@ function EditPersonScreen() {
                 onChange={(e) => setSecondaryContactPhone(e.target.value)}
               />
             </Form.Group>
-
-            
 
             <Button className="mt-3" type="submit" variant="primary">
               Update

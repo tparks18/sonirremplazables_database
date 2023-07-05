@@ -53,7 +53,6 @@ def createMissingPerson(request):
         secondary_contact_first_name='Sample Secondary Contact First Name',
         secondary_contact_last_name='Sample Secondary Contact Last Name',
         secondary_contact_phone='Sample Primary Contact Phone'
-
     )
 
     serializer = MissingPersonSerializer(
@@ -100,3 +99,16 @@ def deleteMissingPerson(request, pk):
     missingPerson = MissingPerson.objects.get(_id=pk)
     missingPerson.delete()
     return Response({'success':True})
+
+
+@api_view(['POST'])
+#@permission_classes([IsAdminUser])
+def uploadImage(request):
+    data = request.data
+    person_id = data['person_id']
+    person = MissingPerson.objects.get(_id=person_id)
+    
+    person.image = request.FILES.get('image')
+    person.save()
+
+    return Response('Image was uploaded')

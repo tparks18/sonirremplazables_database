@@ -83,6 +83,7 @@ export const personCreateReducer = (state = {}, action) => {
 
     case PERSON_CREATE_RESET:
       return { loading: false, error: action.payload };
+      //return {}; in the og code this is supposed to be blank?
 
     default:
       return state;

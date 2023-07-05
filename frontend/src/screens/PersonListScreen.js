@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+//import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
@@ -8,11 +9,10 @@ import { listPersons, deletePerson, createPerson } from "../actions/personAction
 import { PERSON_CREATE_RESET, PERSON_DELETE_RESET } from '../constants/personConstants'
 
 function PersonListScreen() {
-  const id = useParams().id;
+//function PersonListScreen(match, history) { match and history is supposed to be in here but why?
+ //const id = useParams().id;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const redirect = "/login";
-  //const adminredirect = `/admin/person/${createdPerson._id}`;
 
   
   const personList = useSelector((state) => state.personList);
@@ -29,26 +29,16 @@ function PersonListScreen() {
   const {
     loading: loadingCreate,
     error: errorCreate,
-    success: successCreate,
+    //success: successCreate,
     person: createdPerson
   } = personCreate;
 
-  
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  // useEffect(() => {
-  //   if (userInfo && userInfo.isAdmin) {
-  //     dispatch(listPersons());
-  //   } else {
-  //     navigate(redirect);
-  //   }
-  // }, [dispatch, navigate, redirect, userInfo, successDelete]);
-
-
 useEffect(() => {
   if (!userInfo.isAdmin) {
-    navigate(redirect);
+    navigate("/login");
   } else {
     if (createdPerson) {
       navigate(`/admin/person/edit/${createdPerson._id}`);
@@ -62,7 +52,7 @@ useEffect(() => {
       dispatch({ type: PERSON_DELETE_RESET });
     }
   }
-}, [dispatch, navigate, userInfo, createdPerson, successDelete, redirect]);
+}, [dispatch, navigate, userInfo, createdPerson, successDelete]);
 
 
 
@@ -119,10 +109,6 @@ const createPersonHandler = () => {
                 <th>PROVINCE</th>
                 <th>LAST KNOWN LOCATION</th>
                 <th>DATE LAST SEEN</th>
-                {/* <th>PRIMARY CONTACT NAME</th>
-                <th>PRIMARY CONTACT NUMBER</th>
-                <th>SECONDARY CONTACT NAME</th>
-                <th>SECONDARY CONTACT NUMBER</th> */}
                 <th>EDIT MISSING PERSON</th>
               </tr>
             </thead>
@@ -147,10 +133,6 @@ const createPersonHandler = () => {
                   <td>{person.province}</td>
                   <td>{person.last_known_location}</td>
                   <td>{person.date_last_seen}</td>
-                  {/* <td>{person.name_of_contact}</td>
-                  <td>{person.phone_number_of_contact}</td>
-                  <td>{person.name_of_contact_2}</td>
-                  <td>{person.phone_number_of_contact_2}</td> */}
                   <td>
                     <Link to={`/admin/person/edit/${person._id}`}>
                       <Button variant="light" className="btn-sm">

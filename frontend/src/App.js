@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+//import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Route, Routes } from 'react-router-dom';
-import axios from "axios";
+//import axios from "axios";
 import "../src/styles/main.css";
 import "../src/index.css"
 import Footer from "./components/Footer";
@@ -35,7 +35,7 @@ function App() {
             <Route path="/admin/userlist" element={<UserListScreen />} />
             <Route path="/admin/user/edit/:id" element={<EditUserScreen />} />
             <Route path="/admin/personlist" element={<PersonListScreen />} />
-            <Route path="/admin/person/edit/:id" element={<EditPersonScreen />} />
+            <Route path="/admin/person/edit/:person_id" element={<EditPersonScreen />} />
           </Routes>
         </Container>
       </main>
