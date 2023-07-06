@@ -11,12 +11,22 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from rest_framework import status
 
-
 @api_view(['GET'])
 def getMissingPersons(request):
-    missingPersons = MissingPerson.objects.all()
-    serializer = MissingPersonSerializer(missingPersons, many=True)
-    return Response(serializer.data)
+    query = request.query_params.get('keyword')
+    if query is None:
+        query = ''
+    try:
+        if query:
+            missingPersons = MissingPerson.objects.filter(
+                first_name__icontains=query)
+        else:
+            missingPersons = MissingPerson.objects.all()
+
+        serializer = MissingPersonSerializer(missingPersons, many=True)
+        return Response(serializer.data)
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view(['GET'])
@@ -25,6 +35,7 @@ def getMissingPerson(request, pk):
     serializer = MissingPersonSerializer(
         missingPerson, many=False)
     return Response(serializer.data)
+
 
 @api_view(['POST'])
 @permission_classes([IsAdminUser])
@@ -46,7 +57,7 @@ def createMissingPerson(request):
         province='Sample Province',
         city='Sample City',
         last_known_location='Sample Last Known Location',
-        date_last_seen = current_date,
+        date_last_seen=current_date,
         primary_contact_first_name='Sample Primary Contact First Name',
         primary_contact_last_name='Sample Primary Contact Last Name',
         primary_contact_phone='Sample Primary Contact Phone',
@@ -93,21 +104,22 @@ def updateMissingPerson(request, pk):
         missingPerson, many=False)
     return Response(serializer.data)
 
+
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])
 def deleteMissingPerson(request, pk):
     missingPerson = MissingPerson.objects.get(_id=pk)
     missingPerson.delete()
-    return Response({'success':True})
+    return Response({'success': True})
 
 
 @api_view(['POST'])
-#@permission_classes([IsAdminUser])
+# @permission_classes([IsAdminUser])
 def uploadImage(request):
     data = request.data
     person_id = data['person_id']
     person = MissingPerson.objects.get(_id=person_id)
-    
+
     person.image = request.FILES.get('image')
     person.save()
 

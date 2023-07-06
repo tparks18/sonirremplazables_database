@@ -2,26 +2,28 @@ import React, { useEffect } from "react";
 //import { missingPersons } from "../missingPersons";
 import SearchBar from "../components/SearchBar";
 import { Row, Col } from "react-bootstrap";
-import Person from '../components/Person'
+import Person from "../components/Person";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { useDispatch, useSelector } from 'react-redux'
-import { listPersons } from '../actions/personActions'
+import { useDispatch, useSelector } from "react-redux";
+import { listPersons } from "../actions/personActions";
+import { useLocation } from "react-router-dom";
 
 function HomeScreen() {
-
-  const dispatch = useDispatch()
- const personList = useSelector((state) => {
-   console.log("State:", state);
-   return state.personList;
- });
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const personList = useSelector((state) => {
+    console.log("State:", state);
+    return state.personList;
+  });
   const { error, loading, persons } = personList;
+  let keyword = new URLSearchParams(location.search).get("keyword") || "";
 
   useEffect(() => {
+    dispatch(listPersons(keyword));
+  }, [dispatch, keyword]);
 
-    dispatch(listPersons())
-
-  }, [dispatch])
+  console.log("Persons:", persons);
 
   return (
     <div>

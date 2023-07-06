@@ -18,26 +18,31 @@ import {
   PERSON_UPDATE_RESET,
 } from "../constants/personConstants";
 
-export const listPersons = () => async (dispatch) => {
-  try {
-    dispatch({ type: PERSON_LIST_REQUEST });
+export const listPersons =
+  (keyword = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PERSON_LIST_REQUEST });
 
-    const { data } = await axios.get("/api/missingPersons/");
+      const { data } = await axios.get(
+        `/api/missingPersons/?keyword=${keyword}`
+      );
 
-    dispatch({
-      type: PERSON_LIST_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: PERSON_LIST_FAIL,
-      payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
-          : error.message,
-    });
-  }
-};
+      dispatch({
+        type: PERSON_LIST_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: PERSON_LIST_FAIL,
+        payload:
+          error.response && error.response.data.detail
+            ? error.response.data.detail
+            : error.message,
+      });
+    }
+  };
+
 
 export const listPersonDetails = (id) => async (dispatch) => {
   try {
@@ -146,7 +151,7 @@ export const updatePerson = (person) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/missingPersons/update/${person._id}/`,
+      `/api/missingPersons/update/${person._id}`,
       person,
       config
     );
@@ -159,7 +164,7 @@ export const updatePerson = (person) => async (dispatch, getState) => {
     dispatch({ 
       type: PERSON_DETAILS_SUCCESS, 
       payload: data });
-
+      
   } catch (error) {
     dispatch({
       type: PERSON_UPDATE_FAIL,
