@@ -2,14 +2,14 @@ import React from "react";
 import { Pagination } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-function Paginate({ pages, page, keyword = "", isAdmin = false }) {
+function PaginateAdmin({ pages, page, keyword = "" }) {
   const navigate = useNavigate();
 
   const changePage = (pageNum) => {
     navigate(
-      !isAdmin
-        ? `/?keyword=${keyword}&page=${pageNum}`
-        : `/admin/personlist/?keyword=${keyword}&page=${pageNum}`
+      keyword
+        ? `/admin/personlist/?keyword=${keyword}&page=${pageNum}`
+        : `/admin/personlist/?page=${pageNum}`
     );
   };
 
@@ -30,5 +30,4 @@ function Paginate({ pages, page, keyword = "", isAdmin = false }) {
   );
 }
 
-export default Paginate;
-
+export default PaginateAdmin;
