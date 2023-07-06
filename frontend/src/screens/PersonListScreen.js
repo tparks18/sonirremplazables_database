@@ -5,18 +5,22 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Paginate from "../components/Paginate";
 import { listPersons, deletePerson, createPerson } from "../actions/personActions";
 import { PERSON_CREATE_RESET, PERSON_DELETE_RESET } from '../constants/personConstants'
+import { useLocation } from "react-router-dom";
 
 function PersonListScreen() {
 //function PersonListScreen(match, history) { match and history is supposed to be in here but why?
  //const id = useParams().id;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  let keyword = new URLSearchParams(location.search).get("keyword") || "";
 
   
   const personList = useSelector((state) => state.personList);
-  const { loading, error, persons } = personList;
+  const { loading, error, persons, pages, page } = personList;
 
   const personDelete = useSelector((state) => state.personDelete);
   const {
@@ -44,7 +48,7 @@ useEffect(() => {
       navigate(`/admin/person/edit/${createdPerson._id}`);
       dispatch({ type: PERSON_CREATE_RESET });
     } else {
-      dispatch(listPersons());
+      dispatch(listPersons(keyword));
     }
 
     if (successDelete) {
@@ -52,7 +56,7 @@ useEffect(() => {
       dispatch({ type: PERSON_DELETE_RESET });
     }
   }
-}, [dispatch, navigate, userInfo, createdPerson, successDelete]);
+}, [dispatch, navigate, userInfo, createdPerson, successDelete, keyword]);
 
 
 
@@ -92,6 +96,8 @@ const createPersonHandler = () => {
         ) : error ? (
           <Message variant="danger">{error}</Message>
         ) : (
+          <div>
+
           <Table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
@@ -152,6 +158,8 @@ const createPersonHandler = () => {
               ))}
             </tbody>
           </Table>
+          <Paginate pages={pages} page={page} isAdmin={true} />
+          </div>
         )}
       </div>
     );

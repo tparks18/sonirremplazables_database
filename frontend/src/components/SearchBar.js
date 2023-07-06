@@ -11,7 +11,7 @@ function SearchBar() {
 const submitHandler = (e) => {
   e.preventDefault();
   if (keyword) {
-    navigate(`/?keyword=${keyword}`);
+    navigate(`/?keyword=${keyword}&page=1`);
   } else {
     navigate("/");
   }
@@ -33,7 +33,7 @@ const submitHandler = (e) => {
             Buscar
             <i className="fa-solid fa-magnifying-glass ms-1"></i>
           </button>
-          <button
+          {/* <button
             className="btn btn-outline-danger dropdown-toggle fw-semibold"
             type="button"
             data-bs-toggle="dropdown"
@@ -65,7 +65,7 @@ const submitHandler = (e) => {
                 Separated link
               </a>
             </li>
-          </ul>
+          </ul> */}
         </div>
 
     </form>

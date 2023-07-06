@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.utils import timezone
+from django.db.models import Q
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from base.missingPersons import missingPersons
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from base.models import MissingPerson
 from base.serializers import MissingPersonSerializer
@@ -10,6 +12,7 @@ from base.serializers import MissingPersonSerializer
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from rest_framework import status
+
 
 @api_view(['GET'])
 def getMissingPersons(request):
@@ -19,14 +22,32 @@ def getMissingPersons(request):
     try:
         if query:
             missingPersons = MissingPerson.objects.filter(
-                first_name__icontains=query)
+                Q(first_name__icontains=query) | Q(last_name__icontains=query)
+            ).order_by('first_name')
         else:
-            missingPersons = MissingPerson.objects.all()
+            missingPersons = MissingPerson.objects.all().order_by('first_name')
+
+        paginator = Paginator(missingPersons, 4)
+        page = request.query_params.get('page')
+
+        if page == None or page == '':
+            page = 1
+        else:
+            page = int(page)
+
+        try:
+            missingPersons = paginator.page(page)
+        except PageNotAnInteger:
+            missingPersons = paginator.page(1)
+        except EmptyPage:
+            missingPersons = paginator.page(paginator.num_pages)
 
         serializer = MissingPersonSerializer(missingPersons, many=True)
-        return Response(serializer.data)
+        return Response({'missingPersons': serializer.data, 'page': page, 'pages': paginator.num_pages})
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 
 
 @api_view(['GET'])

@@ -5,6 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import Person from "../components/Person";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import Paginate from "../components/Paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { listPersons } from "../actions/personActions";
 import { useLocation } from "react-router-dom";
@@ -12,16 +13,20 @@ import { useLocation } from "react-router-dom";
 function HomeScreen() {
   const location = useLocation();
   const dispatch = useDispatch();
+
   const personList = useSelector((state) => {
     console.log("State:", state);
     return state.personList;
   });
-  const { error, loading, persons } = personList;
+
+  const { error, loading, persons, page, pages } = personList;
+
   let keyword = new URLSearchParams(location.search).get("keyword") || "";
+  let pageNumber = new URLSearchParams(location.search).get("page") || "";
 
   useEffect(() => {
-    dispatch(listPersons(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listPersons(keyword, pageNumber));
+  }, [dispatch, keyword, pageNumber]);
 
   console.log("Persons:", persons);
 
@@ -38,13 +43,16 @@ function HomeScreen() {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <Row>
-          {persons.map((person) => (
-            <Col key={person._id} sm={12} md={6} lg={4} xl={3}>
-              <Person person={person} />
-            </Col>
-          ))}
-        </Row>
+        <div>
+          <Row>
+            {persons.map((person) => (
+              <Col key={person._id} sm={12} md={6} lg={4} xl={3}>
+                <Person person={person} />
+              </Col>
+            ))}
+          </Row>
+          <Paginate page={page} pages={pages} keyword={keyword} />
+        </div>
       )}
     </div>
   );

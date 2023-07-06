@@ -32,6 +32,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 # Create your views here.
 
+
 @api_view(['POST'])
 def registerUser(request):
     data = request.data
@@ -75,7 +76,7 @@ def updateUserProfile(request):
 
     if data['password'] != '':
         user.password = make_password(data['password'])
-    
+
     user.save()
 
     return Response(serializer.data)
@@ -87,6 +88,7 @@ def getUsers(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
@@ -112,6 +114,7 @@ def updateUser(request, pk):
 
     serializer = UserSerializer(user, many=False)
     return Response(serializer.data)
+
 
 @api_view(['DELETE'])
 @permission_classes([IsAdminUser])

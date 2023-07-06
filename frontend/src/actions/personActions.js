@@ -19,13 +19,13 @@ import {
 } from "../constants/personConstants";
 
 export const listPersons =
-  (keyword = "") =>
+  (keyword = "", pageNumber = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: PERSON_LIST_REQUEST });
 
       const { data } = await axios.get(
-        `/api/missingPersons/?keyword=${keyword}`
+        `/api/missingPersons/?keyword=${keyword}&page=${pageNumber}`
       );
 
       dispatch({
@@ -151,7 +151,7 @@ export const updatePerson = (person) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/missingPersons/update/${person._id}`,
+      `/api/missingPersons/update/${person._id}/`,
       person,
       config
     );
