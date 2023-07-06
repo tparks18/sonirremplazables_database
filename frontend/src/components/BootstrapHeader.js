@@ -106,8 +106,11 @@ function BootstrapHeader() {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link ms-1" to="/">
-                Base de Datos
+              <Link
+                className="nav-link ms-1"
+                to="http://sonirremplazables.org/"
+              >
+                Más Información
               </Link>
             </li>
           </ul>
