@@ -51,7 +51,13 @@ function HomeScreen() {
               </Col>
             ))}
           </Row>
-          <Paginate page={page} pages={pages} keyword={keyword} />
+          <Paginate
+            pages={pages}
+            page={page}
+            keyword={keyword}
+            isAdmin={false}
+            isKeywordSearch={true}
+          />
         </div>
       )}
     </div>

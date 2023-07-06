@@ -1,26 +1,28 @@
 import React, { useEffect } from "react";
-//import { Link, useNavigate, useParams } from "react-router-dom";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import Paginate from "../components/Paginate";
-import { listPersons, deletePerson, createPerson } from "../actions/personActions";
-import { PERSON_CREATE_RESET, PERSON_DELETE_RESET } from '../constants/personConstants'
-import { useLocation } from "react-router-dom";
+import PaginateAdmin from "../components/PaginateAdmin";
+import SearchBarAdmin from "../components/SearchBarAdmin";
+import {
+  listPersons,
+  deletePerson,
+  createPerson,
+} from "../actions/personActions";
+import {
+  PERSON_CREATE_RESET,
+  PERSON_DELETE_RESET,
+} from "../constants/personConstants";
 
 function PersonListScreen() {
-//function PersonListScreen(match, history) { match and history is supposed to be in here but why?
- //const id = useParams().id;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  let keyword = new URLSearchParams(location.search).get("keyword") || "";
 
-  
   const personList = useSelector((state) => state.personList);
-  const { loading, error, persons, pages, page } = personList;
+  const { loading, error, persons, page, pages } = personList;
 
   const personDelete = useSelector((state) => state.personDelete);
   const {
@@ -33,12 +35,14 @@ function PersonListScreen() {
   const {
     loading: loadingCreate,
     error: errorCreate,
-    //success: successCreate,
-    person: createdPerson
+    person: createdPerson,
   } = personCreate;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+
+  let keyword = new URLSearchParams(location.search).get("keyword") || "";
+  let pageNumber = new URLSearchParams(location.search).get("page") || "";
 
 useEffect(() => {
   if (!userInfo.isAdmin) {
@@ -48,7 +52,7 @@ useEffect(() => {
       navigate(`/admin/person/edit/${createdPerson._id}`);
       dispatch({ type: PERSON_CREATE_RESET });
     } else {
-      dispatch(listPersons(keyword));
+      dispatch(listPersons(keyword, pageNumber));
     }
 
     if (successDelete) {
@@ -56,48 +60,55 @@ useEffect(() => {
       dispatch({ type: PERSON_DELETE_RESET });
     }
   }
-}, [dispatch, navigate, userInfo, createdPerson, successDelete, keyword]);
+}, [
+  dispatch,
+  navigate,
+  userInfo,
+  createdPerson,
+  successDelete,
+  keyword,
+  pageNumber,
+]);
 
 
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure you want to delete this person card?")) {
+      dispatch(deletePerson(id));
+    }
+  };
 
-const deleteHandler = (id) => {
-  if (window.confirm("Are you sure you want to delete this person card?")) {
-    dispatch(deletePerson(id));
-  }
-};
+  const createPersonHandler = () => {
+    dispatch(createPerson());
+  };
 
-const createPersonHandler = () => {
-  dispatch(createPerson());
-};
+  return (
+    <div>
+      <Row className="align-items-center">
+        <Col>
+          <h1>Missing People</h1>
+        </Col>
 
+        <SearchBarAdmin />
 
-    return (
-      <div>
-        <Row className="align-items-center">
-          <Col>
-            <h1>Missing People</h1>
-          </Col>
+        <Col className="text-right">
+          <Button className="my-3" onClick={createPersonHandler}>
+            <i className="fas fa-plus me-1"></i>Create Person Card
+          </Button>
+        </Col>
+      </Row>
 
-          <Col className="text-right">
-            <Button className="my-3" onClick={createPersonHandler}>
-              <i className="fas fa-plus me-1"></i>Create Person Card
-            </Button>
-          </Col>
-        </Row>
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
 
-        {loadingDelete && <Loader />}
-        {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message variant="danger">{errorCreate}</Message>}
 
-        {loadingCreate && <Loader />}
-        {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
-
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">{error}</Message>
-        ) : (
-          <div>
-
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        <div>
           <Table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
@@ -158,12 +169,11 @@ const createPersonHandler = () => {
               ))}
             </tbody>
           </Table>
-          <Paginate pages={pages} page={page} isAdmin={true} />
-          </div>
-        )}
-      </div>
-    );
-  };
-
+          <PaginateAdmin pages={pages} page={page} />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default PersonListScreen;
