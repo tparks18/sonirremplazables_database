@@ -161,9 +161,18 @@ function PersonScreen() {
                     </Col>
                     <Row>
                       <Col>
-                        <strong>Primary Contact Name:</strong>
+                        <strong>Primary Contact First Name:</strong>
                       </Col>
-                      <Col>{person.name_of_contact}</Col>
+                      <Col>{person.primary_contact_first_name}</Col>
+                    </Row>
+                  </ListGroup.Item>
+
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>
+                        <strong>Primary Last Name:</strong>
+                      </Col>
+                      <Col>{person.primary_contact_last_name}</Col>
                     </Row>
                   </ListGroup.Item>
 
@@ -172,7 +181,16 @@ function PersonScreen() {
                       <Col>
                         <strong>Primary Contact Number:</strong>
                       </Col>
-                      <Col>{person.phone_number_of_contact}</Col>
+                      <Col>{person.primary_contact_phone}</Col>
+                    </Row>
+                  </ListGroup.Item>
+
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>
+                        <strong>Secondary Contact First Name:</strong>
+                      </Col>
+                      <Col>{person.secondary_contact_first_name}</Col>
                     </Row>
                   </ListGroup.Item>
 
@@ -181,7 +199,7 @@ function PersonScreen() {
                       <Col>
                         <strong>Secondary Contact Name:</strong>
                       </Col>
-                      <Col>{person.name_of_contact_2}</Col>
+                      <Col>{person.secondary_contact_last_name}</Col>
                     </Row>
                   </ListGroup.Item>
 
@@ -190,7 +208,7 @@ function PersonScreen() {
                       <Col>
                         <strong>Secondary Contact Number:</strong>
                       </Col>
-                      <Col>{person.phone_number_of_contact_2}</Col>
+                      <Col>{person.secondary_contact_phone}</Col>
                     </Row>
                   </ListGroup.Item>
                 </ListGroup>

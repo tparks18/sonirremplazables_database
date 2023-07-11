@@ -170,7 +170,7 @@ function PersonScreen() {
                   <ListGroup.Item>
                     <Row>
                       <Col>
-                        <strong>Primary Contact Last Name:</strong>
+                        <strong>Primary Last Name:</strong>
                       </Col>
                       <Col>{person.primary_contact_last_name}</Col>
                     </Row>
@@ -197,7 +197,7 @@ function PersonScreen() {
                   <ListGroup.Item>
                     <Row>
                       <Col>
-                        <strong>Secondary Contact Last Name:</strong>
+                        <strong>Secondary Contact Name:</strong>
                       </Col>
                       <Col>{person.secondary_contact_last_name}</Col>
                     </Row>
