@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Person({ person }) {
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card className="my-3 p-3 rounded shadow p-3 mb-5 bg-white rounded">
       <Link to={`/person/${person._id}`}>
         <Card.Img src={person.image} />
       </Link>
