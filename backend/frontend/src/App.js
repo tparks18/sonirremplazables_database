@@ -1,7 +1,5 @@
-//import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
-//import axios from "axios";
 import "./styles/main.css";
 import "./index.css";
 import Footer from "./components/Footer";

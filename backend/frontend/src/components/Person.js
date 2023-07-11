@@ -21,11 +21,6 @@ function Person({ person }) {
         <Card.Text as="div">
           <div className="my-2">
             <ul>
-              {/* <li className="list-group-item">
-                <i className="fa-solid fa-phone"></i>
-                <strong> Telefono:</strong> {person.phone_number_of_contact}
-                
-              </li> */}
               <li className="list-group-item">
                 <i className="fa-solid fa-location-dot"></i>
                 <strong> Last Known Location: </strong>

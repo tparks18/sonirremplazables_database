@@ -149,7 +149,8 @@ function PersonScreen() {
           </Col>
 
           <Col md={4}>
-            {userInfo.isAdmin && (
+            {/* {userInfo.isAdmin && ( */}
+            {userInfo && userInfo.isAdmin && (
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>

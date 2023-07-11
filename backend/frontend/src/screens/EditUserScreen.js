@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useReducer } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -17,11 +17,9 @@ const { id } = useParams();
   const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
 
-//   const location = useLocation();
    const navigate = useNavigate();
   const dispatch = useDispatch();
 
-//   const redirect = location.state ? Number(location.state) : "/";
 const redirect = "/admin/userlist";
 
   const userDetails = useSelector((state) => state.userDetails);
