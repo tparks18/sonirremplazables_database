@@ -7,7 +7,7 @@ class MissingPerson(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     first_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True, default='/logo.png')
+    image = models.ImageField(null=True, blank=True, default='/logo1.png')
     gender = models.CharField(max_length=200, null=False, blank=False)
     age_last_seen = models.IntegerField(null=False, blank=False)
     hair = models.CharField(max_length=200, null=True, blank=True)
