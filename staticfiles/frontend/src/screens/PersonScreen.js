@@ -67,7 +67,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Hair:</strong>
+                      <strong>Color de pelo:</strong>
                     </Col>
                     <Col>{person.hair}</Col>
                   </Row>
@@ -76,7 +76,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Eyes:</strong>
+                      <strong>Color de los ojos:</strong>
                     </Col>
                     <Col>{person.eyes}</Col>
                   </Row>
@@ -85,7 +85,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Height:</strong>
+                      <strong>Altura(metros):</strong>
                     </Col>
                     <Col>{person.height}</Col>
                   </Row>
@@ -94,7 +94,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Weight:</strong>
+                      <strong>Peso(kilos):</strong>
                     </Col>
                     <Col>{person.weight}</Col>
                   </Row>
@@ -112,7 +112,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Critical Information:</strong>
+                      <strong>Información crítica:</strong>
                     </Col>
                     <Col>{person.critical_information}</Col>
                   </Row>
@@ -121,7 +121,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Province:</strong>
+                      <strong>Provincia:</strong>
                     </Col>
                     <Col>{person.province}</Col>
                   </Row>
@@ -130,7 +130,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Last Known Location:</strong>
+                      <strong>Última Ubicación Conocida: </strong>
                     </Col>
                     <Col>{person.last_known_location}</Col>
                   </Row>

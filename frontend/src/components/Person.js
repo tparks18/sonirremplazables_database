@@ -26,7 +26,7 @@ function Person({ person }) {
             <ul>
               <li className="list-group-item">
                 <i className="fa-solid fa-location-dot"></i>
-                <strong> Last Known Location: </strong>
+                <strong> Última Ubicación Conocida: </strong>
                 {person.last_known_location}
               </li>
               <li className="list-group-item">
