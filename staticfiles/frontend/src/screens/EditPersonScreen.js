@@ -324,7 +324,7 @@ function EditPersonScreen() {
             </Row>
 
             <Form.Group controlId="lastKnownLocation">
-              <Form.Label>Last Known Location</Form.Label>
+              <Form.Label>Última Ubicación Conocida: </Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter Last Known Location"

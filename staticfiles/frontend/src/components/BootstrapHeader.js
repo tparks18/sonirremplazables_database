@@ -49,7 +49,7 @@ function BootstrapHeader() {
                   <>
                     <li>
                       <Link to="/profile" className="dropdown-item">
-                        Profile
+                        Perfil
                       </Link>
                     </li>
 
@@ -57,7 +57,7 @@ function BootstrapHeader() {
                       <>
                         <li>
                           <Link to="/admin/userlist" className="dropdown-item">
-                            User List
+                            Lista de usuarios
                           </Link>
                         </li>
                         <li>
