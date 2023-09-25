@@ -217,7 +217,7 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="ageLastSeen">
-                  <Form.Label>EDAD CUANDO DESAPARECIÓ</Form.Label>
+                  <Form.Label>Edad cuando desapareció</Form.Label>
                   <Form.Control
                     type="number"
                     placeholder="Añadir edad del desaparecido"
