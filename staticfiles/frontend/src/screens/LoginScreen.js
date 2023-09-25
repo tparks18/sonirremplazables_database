@@ -33,7 +33,7 @@ function LoginScreen() {
 
   return (
     <FormContainer>
-      <h1>Iniciar section</h1>
+      <h1>Iniciar sesión</h1>
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
@@ -69,7 +69,7 @@ function LoginScreen() {
         </Row>
 
         <Button type="submit" variant="primary">
-          Iniciar section
+          Iniciar sesión
         </Button>
       </Form>
     </FormContainer>

@@ -89,7 +89,7 @@ function BootstrapHeader() {
                   <>
                     <li>
                       <Link to="/login" className="dropdown-item">
-                        Iniciar section
+                        Iniciar sesión
                       </Link>
                     </li>
                     <li>

@@ -116,7 +116,7 @@ useEffect(() => {
                 <th>NOMBRE</th>
                 <th>APELLIDO</th>
                 <th>SEXO</th>
-                <th>AÑADIR EDAD DEL DESAPARECIDO</th>
+                <th>EDAD CUANDO DESAPARECIÓ</th>
                 <th>COLOR DE PELO</th>
                 <th>COLOR DE OJOS</th>
                 <th>ALTURA</th>
