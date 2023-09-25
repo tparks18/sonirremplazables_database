@@ -146,7 +146,7 @@ function EditPersonScreen() {
   return (
     <div>
       <Link className="btn btn-primary" to="/admin/personlist">
-        Go Back
+        Página anterior
       </Link>
       <FormContainer>
         <h1>Editar Perfil de Persona Desaparecida</h1>
@@ -206,7 +206,7 @@ function EditPersonScreen() {
             <Row>
               <Col>
                 <Form.Group controlId="gender">
-                  <Form.Label>Gender</Form.Label>
+                  <Form.Label>Sexo</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Sexo"
@@ -217,7 +217,7 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="ageLastSeen">
-                  <Form.Label>Añadir edad del desaparecido</Form.Label>
+                  <Form.Label>EDAD CUANDO DESAPARECIÓ</Form.Label>
                   <Form.Control
                     type="number"
                     placeholder="Añadir edad del desaparecido"
