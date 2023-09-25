@@ -85,7 +85,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Altura:</strong>
+                      <strong>Altura(cm):</strong>
                     </Col>
                     <Col>{person.height}</Col>
                   </Row>
@@ -94,7 +94,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Peso:</strong>
+                      <strong>Peso(lbs):</strong>
                     </Col>
                     <Col>{person.weight}</Col>
                   </Row>

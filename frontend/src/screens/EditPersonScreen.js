@@ -256,7 +256,7 @@ function EditPersonScreen() {
             <Row>
               <Col>
                 <Form.Group controlId="height">
-                  <Form.Label>Altura</Form.Label>
+                  <Form.Label>Altura(cm)</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Altura"
@@ -267,7 +267,7 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="weight">
-                  <Form.Label>Peso</Form.Label>
+                  <Form.Label>Peso(lbs)</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Peso"

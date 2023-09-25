@@ -119,8 +119,8 @@ useEffect(() => {
                 <th>EDAD CUANDO DESAPARECIÓ</th>
                 <th>COLOR DE PELO</th>
                 <th>COLOR DE OJOS</th>
-                <th>ALTURA</th>
-                <th>PESO</th>
+                <th>ALTURA(cm)</th>
+                <th>PESO(lbs)</th>
                 <th>ÚLTIMA ROPA PUESTA</th>
                 <th>INFORMACIÓN CRÍTICA</th>
                 <th>PROVINCIA</th>
