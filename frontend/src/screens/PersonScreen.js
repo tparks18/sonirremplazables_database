@@ -49,7 +49,7 @@ function PersonScreen() {
                   </Col>
                   <Row>
                     <Col>
-                      <strong>Género:</strong>
+                      <strong>Sexo:</strong>
                     </Col>
                     <Col>{person.gender}</Col>
                   </Row>
@@ -58,7 +58,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Edad vista por última vez:</strong>
+                      <strong>Añadir desaparecido:</strong>
                     </Col>
                     <Col>{person.age_last_seen}</Col>
                   </Row>
@@ -67,7 +67,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Hair:</strong>
+                      <strong>Color de pelo:</strong>
                     </Col>
                     <Col>{person.hair}</Col>
                   </Row>
@@ -76,7 +76,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Eyes:</strong>
+                      <strong>Color de ojos:</strong>
                     </Col>
                     <Col>{person.eyes}</Col>
                   </Row>
@@ -85,7 +85,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Height:</strong>
+                      <strong>Altura:</strong>
                     </Col>
                     <Col>{person.height}</Col>
                   </Row>
@@ -94,7 +94,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Weight:</strong>
+                      <strong>Peso:</strong>
                     </Col>
                     <Col>{person.weight}</Col>
                   </Row>
@@ -103,7 +103,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Last Seen Wearing:</strong>
+                      <strong>Última ropa puesta:</strong>
                     </Col>
                     <Col>{person.last_seen_wearing}</Col>
                   </Row>
@@ -112,7 +112,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Critical Information:</strong>
+                      <strong>Información crítica:</strong>
                     </Col>
                     <Col>{person.critical_information}</Col>
                   </Row>
@@ -121,7 +121,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Province:</strong>
+                      <strong>Provincia:</strong>
                     </Col>
                     <Col>{person.province}</Col>
                   </Row>
@@ -130,7 +130,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Última Ubicación Conocida</strong>
+                      <strong>Última ubicación conocida</strong>
                     </Col>
                     <Col>{person.last_known_location}</Col>
                   </Row>
@@ -139,7 +139,7 @@ function PersonScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong>Date Last Seen:</strong>
+                      <strong>Última vez visto:</strong>
                     </Col>
                     <Col>{person.date_last_seen}</Col>
                   </Row>
@@ -156,12 +156,12 @@ function PersonScreen() {
                   <ListGroup.Item>
                     <Col className="text-center">
                       <h5>
-                        <strong>Contacts</strong>
+                        <strong>Contactos</strong>
                       </h5>
                     </Col>
                     <Row>
                       <Col>
-                        <strong>Primary Contact First Name:</strong>
+                        <strong>Nombre del contacto principal:</strong>
                       </Col>
                       <Col>{person.primary_contact_first_name}</Col>
                     </Row>
@@ -170,7 +170,7 @@ function PersonScreen() {
                   <ListGroup.Item>
                     <Row>
                       <Col>
-                        <strong>Primary Last Name:</strong>
+                        <strong>Apellido del contacto principal:</strong>
                       </Col>
                       <Col>{person.primary_contact_last_name}</Col>
                     </Row>
@@ -179,7 +179,7 @@ function PersonScreen() {
                   <ListGroup.Item>
                     <Row>
                       <Col>
-                        <strong>Primary Contact Number:</strong>
+                        <strong>Número principal:</strong>
                       </Col>
                       <Col>{person.primary_contact_phone}</Col>
                     </Row>
@@ -188,7 +188,7 @@ function PersonScreen() {
                   <ListGroup.Item>
                     <Row>
                       <Col>
-                        <strong>Secondary Contact First Name:</strong>
+                        <strong>Nombre del contacto secundario:</strong>
                       </Col>
                       <Col>{person.secondary_contact_first_name}</Col>
                     </Row>
@@ -197,7 +197,7 @@ function PersonScreen() {
                   <ListGroup.Item>
                     <Row>
                       <Col>
-                        <strong>Secondary Contact Name:</strong>
+                        <strong>Apellido del contacto secundario:</strong>
                       </Col>
                       <Col>{person.secondary_contact_last_name}</Col>
                     </Row>
@@ -206,7 +206,7 @@ function PersonScreen() {
                   <ListGroup.Item>
                     <Row>
                       <Col>
-                        <strong>Secondary Contact Number:</strong>
+                        <strong>Número secundario:</strong>
                       </Col>
                       <Col>{person.secondary_contact_phone}</Col>
                     </Row>

@@ -77,67 +77,67 @@ useEffect(() => {
 
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="firstName">
-            <Form.Label>First Name</Form.Label>
+            <Form.Label>Nombre</Form.Label>
             <Form.Control
               required
               type="text"
-              placeholder="Enter First Name"
+              placeholder="Ingrese el nombre"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
           <Form.Group controlId="lastName">
-            <Form.Label>Last Name</Form.Label>
+            <Form.Label>Apellido</Form.Label>
             <Form.Control
               required
               type="text"
-              placeholder="Enter Last Name"
+              placeholder="Ingrese el apellido"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
           <Form.Group controlId="email">
-            <Form.Label>Email Address</Form.Label>
+            <Form.Label>Correo electrónico</Form.Label>
             <Form.Control
               required
               type="email"
-              placeholder="Enter Email"
+              placeholder="Ingrese correo electrónico"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
           <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Contraseña</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Enter Password"
+              placeholder="Ingrese la contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
           <Form.Group controlId="confirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label>Confirmar contraseña</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Confirm Password"
+              placeholder="Confirmar contraseña"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>
 
           <Button className="mt-3" type="submit" variant="primary">
-            Update
+            Actualizar
           </Button>
         </Form>
       </Col>
 
-      <Col md={9}>
+      {/* <Col md={9}>
         <h2>My Uploads</h2>
-      </Col>
+      </Col> */}
     </Row>
   );
 }

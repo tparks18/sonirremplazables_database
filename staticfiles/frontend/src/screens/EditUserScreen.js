@@ -55,10 +55,10 @@ const redirect = "/admin/userlist";
   return (
     <div>
       <Link className="btn btn-primary" to="/admin/userlist">
-        Go Back
+        Página anterior
       </Link>
       <FormContainer>
-        <h1>Edit User</h1>
+        <h1>Editar usario</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
@@ -68,47 +68,47 @@ const redirect = "/admin/userlist";
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="firstName">
-              <Form.Label>First Name</Form.Label>
+              <Form.Label>Nombre</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter First Name"
+                placeholder="Ingrese nombre"
                 value={first_name}
                 onChange={(e) => setFirstName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="lastName">
-              <Form.Label>Last Name</Form.Label>
+              <Form.Label>apellido</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Last Name"
+                placeholder="Ingrese apellido"
                 value={last_name}
                 onChange={(e) => setLastName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="email">
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label>Correo electrónico</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter Email"
+                placeholder="Ingrese correo electrónico"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="isAdmin">
-              <Form.Label>Admin</Form.Label>
+              <Form.Label>Administrador</Form.Label>
               <Form.Check
                 type="checkbox"
-                label="Is Admin"
+                label="Administrador"
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
               ></Form.Check>
             </Form.Group>
 
             <Button className="mt-3" type="submit" variant="primary">
-              Update
+              Actualizar
             </Button>
           </Form>
         )}

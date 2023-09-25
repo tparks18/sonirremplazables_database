@@ -35,7 +35,7 @@ function UserListScreen() {
 
   return (
     <div>
-      <h1>Users</h1>
+      <h1>Usarios</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -45,11 +45,11 @@ function UserListScreen() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>FIRST NAME</th>
-              <th>LAST NAME</th>
-              <th>EMAIL</th>
-              <th>IS ADMIN</th>
-              <th>EDIT USER</th>
+              <th>NOMBRE</th>
+              <th>APELLIDO</th>
+              <th>CORREO ELECTRÓNICO</th>
+              <th>ADMINISTRADOR</th>
+              <th>EDITAR USARIO</th>
             </tr>
           </thead>
           <tbody>

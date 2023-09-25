@@ -85,14 +85,14 @@ useEffect(() => {
     <div>
       <Row className="align-items-center">
         <Col>
-          <h1>Missing People</h1>
+          <h1>Lista de personas desaparecidas</h1>
         </Col>
 
         <SearchBarAdmin />
 
         <Col className="text-right">
           <Button className="my-3" onClick={createPersonHandler}>
-            <i className="fas fa-plus me-1"></i>Create Person Card
+            <i className="fas fa-plus me-1"></i>Añadir desaparecido
           </Button>
         </Col>
       </Row>
@@ -113,20 +113,20 @@ useEffect(() => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>FIRST NAME</th>
-                <th>LAST NAME</th>
-                <th>GENDER</th>
-                <th>AGE LAST SEEN</th>
-                <th>HAIR</th>
-                <th>EYES</th>
-                <th>HEIGHT</th>
-                <th>WEIGHT</th>
-                <th>LAST SEEN WEARING</th>
-                <th>CRITICAL INFORMATION</th>
-                <th>PROVINCE</th>
-                <th>LAST KNOWN LOCATION</th>
-                <th>DATE LAST SEEN</th>
-                <th>EDIT MISSING PERSON</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>SEXO</th>
+                <th>AÑADIR EDAD DEL DESAPARECIDO</th>
+                <th>COLOR DE PELO</th>
+                <th>COLOR DE OJOS</th>
+                <th>ALTURA</th>
+                <th>PESO</th>
+                <th>ÚLTIMA ROPA PUESTA</th>
+                <th>INFORMACIÓN CRÍTICA</th>
+                <th>PROVINCIA</th>
+                <th>ÚLTIMA UBICACIÓN CONOCIDA</th>
+                <th>ÚLTIMA VEZ VISTO</th>
+                <th>EDITAR PERSONA DESAPARECIDA</th>
               </tr>
             </thead>
             <tbody>

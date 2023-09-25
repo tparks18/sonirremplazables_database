@@ -149,7 +149,7 @@ function EditPersonScreen() {
         Go Back
       </Link>
       <FormContainer>
-        <h1>Edit Person</h1>
+        <h1>Editar Perfil de Persona Desaparecida</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
 
@@ -162,10 +162,10 @@ function EditPersonScreen() {
             <Row>
               <Col>
                 <Form.Group controlId="firstName">
-                  <Form.Label>First Name</Form.Label>
+                  <Form.Label>Nombre</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter First Name"
+                    placeholder="Escribe Nombre"
                     value={first_name}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
@@ -173,10 +173,10 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="lastName">
-                  <Form.Label>Last Name</Form.Label>
+                  <Form.Label>Apellido</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Last Name"
+                    placeholder="Escribe Apellido"
                     value={last_name}
                     onChange={(e) => setLastName(e.target.value)}
                   />
@@ -185,10 +185,10 @@ function EditPersonScreen() {
             </Row>
 
             <Form.Group id="image">
-              <Form.Label>Image</Form.Label>
+              <Form.Label>Imagen</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Upload Image"
+                placeholder="Subir Imagen"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
@@ -196,7 +196,7 @@ function EditPersonScreen() {
               <Form.Control
                 type="file"
                 id="image-file"
-                label="Choose File"
+                label="Elegir Archivo"
                 custom
                 onChange={uploadFileHandler}
               ></Form.Control>
@@ -209,7 +209,7 @@ function EditPersonScreen() {
                   <Form.Label>Gender</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Gender"
+                    placeholder="Sexo"
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
                   />
@@ -217,10 +217,10 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="ageLastSeen">
-                  <Form.Label>Age Last Seen</Form.Label>
+                  <Form.Label>Añadir edad del desaparecido</Form.Label>
                   <Form.Control
                     type="number"
-                    placeholder="Enter Age Last Seen"
+                    placeholder="Añadir edad del desaparecido"
                     value={age_last_seen}
                     onChange={(e) => setAgeLastSeen(e.target.value)}
                   />
@@ -231,10 +231,10 @@ function EditPersonScreen() {
             <Row>
               <Col>
                 <Form.Group controlId="hair">
-                  <Form.Label>Hair</Form.Label>
+                  <Form.Label>Color de pelo</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Hair Description"
+                    placeholder="Color de pelo"
                     value={hair}
                     onChange={(e) => setHair(e.target.value)}
                   />
@@ -242,10 +242,10 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="eyes">
-                  <Form.Label>Eyes</Form.Label>
+                  <Form.Label>Color de ojos</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Eye Description"
+                    placeholder="Color de ojos"
                     value={eyes}
                     onChange={(e) => setEyes(e.target.value)}
                   />
@@ -256,10 +256,10 @@ function EditPersonScreen() {
             <Row>
               <Col>
                 <Form.Group controlId="height">
-                  <Form.Label>Height</Form.Label>
+                  <Form.Label>Altura</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Height"
+                    placeholder="Altura"
                     value={height}
                     onChange={(e) => setHeight(e.target.value)}
                   />
@@ -267,10 +267,10 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="weight">
-                  <Form.Label>Weight</Form.Label>
+                  <Form.Label>Peso</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Weight"
+                    placeholder="Peso"
                     value={weight}
                     onChange={(e) => setWeight(e.target.value)}
                   />
@@ -279,17 +279,17 @@ function EditPersonScreen() {
             </Row>
 
             <Form.Group controlId="lastSeenWearing">
-              <Form.Label>Last Seen Wearing</Form.Label>
+              <Form.Label>Última ropa puesta</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Last Seen Wearing"
+                placeholder="Última ropa puesta"
                 value={last_seen_wearing}
                 onChange={(e) => setLastSeenWearing(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="criticalInformation">
-              <Form.Label>Critical Information</Form.Label>
+              <Form.Label>Información crítica</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter Critical Information"
@@ -301,10 +301,10 @@ function EditPersonScreen() {
             <Row>
               <Col>
                 <Form.Group controlId="province">
-                  <Form.Label>Province</Form.Label>
+                  <Form.Label>Provincia</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Province"
+                    placeholder="Ingrese provincia"
                     value={province}
                     onChange={(e) => setProvince(e.target.value)}
                   />
@@ -312,10 +312,10 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="city">
-                  <Form.Label>City</Form.Label>
+                  <Form.Label>Ciudad</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter City"
+                    placeholder="Ingrese ciudad"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                   />
@@ -327,17 +327,17 @@ function EditPersonScreen() {
               <Form.Label>Última Ubicación Conocida: </Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Last Known Location"
+                placeholder="Última ubicación conocida"
                 value={last_known_location}
                 onChange={(e) => setLastKnownLocation(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId="dateLastSeen">
-              <Form.Label>Date Last Seen</Form.Label>
+              <Form.Label>Última vez visto</Form.Label>
               <Form.Control
                 type="date"
-                placeholder="Enter Date Last Seen"
+                placeholder="Última vez visto"
                 value={date_last_seen}
                 onChange={(e) => setDateLastSeen(e.target.value)}
               ></Form.Control>
@@ -346,10 +346,10 @@ function EditPersonScreen() {
             <Row>
               <Col>
                 <Form.Group controlId="primaryContactFirstName">
-                  <Form.Label>Primary Contact First Name</Form.Label>
+                  <Form.Label>Nombre del contacto principal</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Primary Contact First Name"
+                    placeholder="Ingrese nombre del contacto principal"
                     value={primary_contact_first_name}
                     onChange={(e) => setPrimaryContactFirstName(e.target.value)}
                   />
@@ -357,10 +357,10 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="primaryLastName">
-                  <Form.Label>Primary Contact Last Name</Form.Label>
+                  <Form.Label>Apellido del contacto principal</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Primary Contact Last Name"
+                    placeholder="Ingrese apellido del contacto principal"
                     value={primary_contact_last_name}
                     onChange={(e) => setPrimaryContactLastName(e.target.value)}
                   />
@@ -369,10 +369,10 @@ function EditPersonScreen() {
             </Row>
 
             <Form.Group controlId="primaryContactPhone">
-              <Form.Label>Primary Contact Phone</Form.Label>
+              <Form.Label>Número principal</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Primary Contact Phone"
+                placeholder="Ingrese número principal"
                 value={primary_contact_phone}
                 onChange={(e) => setPrimaryContactPhone(e.target.value)}
               />
@@ -381,10 +381,10 @@ function EditPersonScreen() {
             <Row>
               <Col>
                 <Form.Group controlId="secondaryContactFirstName">
-                  <Form.Label>Secondary Contact First Name</Form.Label>
+                  <Form.Label>Nombre del contacto secundario</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Secondary Contact First Name"
+                    placeholder="Ingrese nombre del contacto secundario"
                     value={secondary_contact_first_name}
                     onChange={(e) =>
                       setSecondaryContactFirstName(e.target.value)
@@ -394,10 +394,10 @@ function EditPersonScreen() {
               </Col>
               <Col>
                 <Form.Group controlId="secondaryLastName">
-                  <Form.Label>Secondary Contact Last Name</Form.Label>
+                  <Form.Label>Apellido del contacto secundario</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter secondary Contact Last Name"
+                    placeholder="Ingrese apellido del contacto secundario"
                     value={secondary_contact_last_name}
                     onChange={(e) =>
                       setSecondaryContactLastName(e.target.value)
@@ -408,17 +408,17 @@ function EditPersonScreen() {
             </Row>
 
             <Form.Group controlId="secondaryContactPhone">
-              <Form.Label>Secondary Contact Phone</Form.Label>
+              <Form.Label>Número secundario</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Secondary Contact Phone"
+                placeholder="Ingrese número secundario"
                 value={secondary_contact_phone}
                 onChange={(e) => setSecondaryContactPhone(e.target.value)}
               />
             </Form.Group>
 
             <Button className="mt-3" type="submit" variant="primary">
-              Update
+              Actualizar
             </Button>
           </Form>
         )}

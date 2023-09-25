@@ -33,39 +33,44 @@ function LoginScreen() {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
-      {error && <Message variant='danger'>{error}</Message>}
+      <h1>Iniciar section</h1>
+      {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>Correo electrónico</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter Email"
+            placeholder="Ingrese correo electrónico"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Contraseña</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Enter Password"
+            placeholder="Ingrese la contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
-        <Row className='py-3'>
-            <Col>
-            New User? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
-                Register
+        <Row className="py-3">
+          <Col>
+            ¿Nuevo usario?{" "}
+            <Link
+              to={redirect ? `/register?redirect=${redirect}` : "/register"}
+            >
+              Registrar
             </Link>
-            </Col>
+          </Col>
         </Row>
 
-        <Button type='submit' variant='primary'>Sign In</Button>
+        <Button type="submit" variant="primary">
+          Iniciar section
+        </Button>
       </Form>
     </FormContainer>
   );

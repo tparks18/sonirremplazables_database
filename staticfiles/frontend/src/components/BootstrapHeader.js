@@ -65,7 +65,7 @@ function BootstrapHeader() {
                             to="/admin/personlist"
                             className="dropdown-item"
                           >
-                            Missing People List
+                            Lista de personas desaparecidas
                           </Link>
                         </li>
                       </>
@@ -81,7 +81,7 @@ function BootstrapHeader() {
                         onClick={logoutHandler}
                         href="/"
                       >
-                        Logout
+                        Salir
                       </a>
                     </li>
                   </>
@@ -89,7 +89,7 @@ function BootstrapHeader() {
                   <>
                     <li>
                       <Link to="/login" className="dropdown-item">
-                        Acceder
+                        Iniciar section
                       </Link>
                     </li>
                     <li>
@@ -97,7 +97,7 @@ function BootstrapHeader() {
                     </li>
                     <li>
                       <Link to="/register" className="dropdown-item">
-                        Register
+                        Registrar
                       </Link>
                     </li>
                   </>
